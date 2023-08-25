@@ -1,0 +1,10 @@
+.text-container {
+    width: 800px;
+    color: #a24416;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.left-align {
+    text-align: start;
+}
