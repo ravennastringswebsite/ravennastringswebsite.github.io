@@ -4,6 +4,8 @@
 <head>
   <title>Donate</title>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="css/donate.css">
+  <link rel="stylesheet" href="css/main.css">
 
   <!-- For Optimal Rendering for Paypal -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,64 +18,36 @@
   <meta property="og:title" content="The Ravenna String Orchestras Home">
   <meta property="og:description" content="Ravenna Strings is a community orchestra based in Seattle. Our musicians perform classical and contemporary music quarterly.">
   <meta property="og:image" content="https://ravennastrings.org/image/PanoramaOrchestra.jpg">
+
+  <script src="js/header.js"></script>
 </head>
 
 <body>
-  <!-- <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script> -->
-  <div align="center"><a href="index.html"><img src="image/banner.gif" alt="" height="141" width="640"></a> </div>
+  <header>
+    <div id="header-placeholder"></div>
+  </header> 
 
-  <br>
-  <table align="center" border="0" cellpadding="2" cellspacing="2" width="800">
-    <tbody>
-      <tr>
-        <td rowspan="1" colspan="3" align="center" valign="top">
-          <a href="The_RSO.html">
-            <font size=4" color="#a24416">The Ravenna Strings</font>
-          </a>
-          <br>
-        </td>
-        <td rowspan="1" colspan="3" align="center" valign="top">&nbsp;
-          <a href="The_R2SO.html">
-            <font size="4" color="#a24416">The Ravenna Second Strings</font>
-          </a>
 
-          <br>
-        </td>
-      </tr>
-      <tr>
 
-        <td align="center" valign="top"><br>
-        </td>
-        <td align="center" valign="top"><a href="register.html">
-            <font color="#a24416">Register</font>
-          </a> </td>
+  <div class="text-container">
+    <p class="left-align">
+      Any contribution large or small is deeply appreciated for
+      our Special Coaches and Soloists' Fund.
+      <br><br>
+      We are now a 501(c)3 under the umbrella of the Associated
+      Recreation Council (ARC). This is the non-profit partner
+      of Seattle Parks and Recreation. All gifts are 100% tax
+      deductible.
+    </p>
+  </div>
 
-        <td align="center" valign="top"><a href="conductors.html">
-            <font color="#a24416">Conductors</font>
-          </a></td>
+  <div id="donate-button-wrapper">
+    <form action="https://www.paypal.com/donate" method="post" target="_top">
+      <input type="hidden" name="hosted_button_id" value="72TPZAMUUR43G" />
+      <input type="image" src="https://pics.paypal.com/00/s/ODFkMzc0N2ItMmRmOC00MDNmLWE1NTctYmVlM2RjZTg1MTll/file.PNG" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+      <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+    </form>
+  </div>
 
-        <td align="center" valign="top"><a href="About_Us.html">
-            <font color="#a24416">Our Story</font>
-          </a></td>
-
-        <td align="center" valign="top"><a href="donate.html">
-            <font color="#a24416">Donate</font>
-          </a> </td>
-
-      </tr>
-    </tbody>
-  </table>
-  <br><br>
-
-  <section>
-    <div align="center">
-      <p class="p1">under construction</p>
-       <div id="paypal-donate-button-container"></div>
-      <form action="https://www.paypal.com/donate" method="post" target="_top">
-        <input type="hidden" name="hosted_button_id" value="TDF22DU2493UQ" />
-        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
-        <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-      </form>
 </body>
-
 </html>
