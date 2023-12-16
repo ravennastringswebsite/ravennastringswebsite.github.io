@@ -1,10 +1,39 @@
 .text-container {
-    width: 800px;
+    width: 640px;
     color: #a24416;
     text-align: center;
     margin: 0 auto;
+    padding: 0 10px;
+}
+
+.text-container img {
+    float: right;
+    margin-left: 20px;
 }
 
 .left-align {
     text-align: start;
+}
+
+.header-link:hover {
+    color: #a24416;
+}
+#header {
+    background-color: #2f140a;
+    width: 640px;
+    display: flex;
+    margin: 0 auto 20px;
+    padding: 25px 10px;
+}
+
+#header a {
+    background-color: #2f140a;
+    color: #f5f5dc;
+    font-size: large;
+    transition: color 0.3s;
+    text-decoration: none !important;
+}
+
+#header a:hover {
+    color: #ffd700;
 }

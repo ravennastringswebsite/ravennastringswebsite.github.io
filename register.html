@@ -20,52 +20,34 @@
   <meta property="og:image" content="https://ravennastrings.org/image/PanoramaOrchestra.jpg">
 
   <script src="js/header.js"></script>
+  <script async src="https://js.stripe.com/v3/buy-button.js">
+  </script>
+
 </head>
 
 <body>
-  <header>
-    <div id="header-placeholder"></div>
-  </header> 
+<header>
+  <div id="header-placeholder"></div>
+</header>
 
-  <div class="text-container">
-    <p class="left-align">
-<big>
-Register below using the Paypal link.
-<br>
-Please include your NAME, INSTRUMENT and ORCHESTRA (Monday or Thursday)
-<br><br>
-$150 regular, $90 reduced (student, senior, etc.)
-<br>
-You may also choose $10 (per week) or 'Other' 
-</big>
-<br><br>
-<strong>
-NOTE: when you get to the PayPal page it will say 'donation'. This is not correct.
-<br> 
-When you register, you are paying for participating in the program 
-<br>
-which, for tax purposes, is different from a donation.
-<br><br>
-We're working to get that fixed, but it may take a little while.
-<br>
-SO, you can still register- just understand it is NOT a donation for tax
-purposes. 
-<br>
-OR you can wait to register until it's fixed and just send us an email
-<br>
-letting us know you're planning on participating 
-<a href="mailto:ravennastrings@gmail.com"> ravennastrings@gmail.com</a> 
-</strong>
-    </p>
-  </div>
+<div class="text-container">
+  <h2>Register</h2>
+  <br>
+  <p class="left-align">
+    Register below using the Stripe link.
+    <br>
+    Please include your NAME, INSTRUMENT and ORCHESTRA (Monday or Thursday)
+    <br><br>
+    $150 regular, $90 reduced (student, senior, etc.)
+  </p>
+  <br>
+  <stripe-buy-button
+      buy-button-id="buy_btn_1ONpqQFUwXsqxbcqB4KY7C8x"
+      publishable-key="pk_live_51OAylmFUwXsqxbcqQMpQEJ8a4EEpIte8jaNJGZKBKdRAf9V5GU7TztFXrarbpKq79GpojRjXs215mZ2vDt9Erm3f00jwCznAHc"
+  >
+  </stripe-buy-button>
+</div>
 
-  <div id="donate-button-wrapper">
-    <form action="https://www.paypal.com/donate" method="post" target="_top">
-      <input type="hidden" name="hosted_button_id" value="TDF22DU2493UQ" />
-      <input type="image" src="https://pics.paypal.com/00/s/MjYwYTU3OWQtZjkwOC00ZDk2LWI5MTItN2M0OWI5OGE4NjE2/file.PNG" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Register with PayPal button" />
-      <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
-    </form>
-  </div>
 </body>
 
 </html>
