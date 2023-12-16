@@ -4,6 +4,7 @@
     text-align: center;
     margin: 0 auto;
     padding: 0 10px;
+    font-size: large;
 }
 
 .text-container img {
@@ -11,8 +12,21 @@
     margin-left: 20px;
 }
 
+p.exclamation {
+    color: black;
+    font-size: larger;
+}
+
 .left-align {
     text-align: start;
+}
+
+#conductor-img-container {
+    text-align: center;
+}
+
+#conductor-img {
+    height: 500px;
 }
 
 .image-link {
