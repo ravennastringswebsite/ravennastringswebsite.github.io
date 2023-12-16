@@ -6,7 +6,6 @@
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="css/donate.css">
   <link rel="stylesheet" href="css/main.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
   <!-- For Optimal Rendering for Paypal -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,25 +20,28 @@
   <meta property="og:image" content="https://ravennastrings.org/image/PanoramaOrchestra.jpg">
 
   <script src="js/header.js"></script>
+  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 </head>
 
 <body>
   <header>
     <div id="header-placeholder"></div>
-  </header> 
-
-
+  </header>
 
   <div class="text-container">
+    <h2>Donate</h2>
+    <br>
     <p class="left-align">
       Please support our Guest Artists Fund which allows us to bring in coaches and soloists to work with our musicians. Any contribution large or small is deeply appreciated!
       <br><br>
       We are now a 501(c)3 non-profit organization. All gifts are 100% tax
       deductible.
     </p>
-    <a class="btn btn-primary btn-lg big-button" href="https://checkout.stripe.com/c/pay/cs_live_a1gh2bRzYaCO0X5RXGONtaNCzD7PH6G3iXc8nap8YEKCS2Dtsm1prksof7#fidkdWxOYHwnPyd1blppbHNgWjA0SkR8aWhDUHJddnR9Z2Z0VEh1VEBPPWQxQEB1THFgPW9kS09CX05HTmFXRGM8UzBCUDJRf3FDXXdkd2d1TnQyPEJ1am9Xb112NzQwaF83c0FxPEB3aDZjNTVvckZ%2Fa0RNZicpJ3VpbGtuQH11anZgYUxhJz8nNz1qZ09vZjFnYWA1Z1MzNz1kJ3gl" role="button">
-      Donate
-    </a>
+    <stripe-buy-button
+        buy-button-id="buy_btn_1ONq08FUwXsqxbcq72jQUejR"
+        publishable-key="pk_live_51OAylmFUwXsqxbcqQMpQEJ8a4EEpIte8jaNJGZKBKdRAf9V5GU7TztFXrarbpKq79GpojRjXs215mZ2vDt9Erm3f00jwCznAHc"
+    >
+    </stripe-buy-button>
   </div>
 
 </body>
