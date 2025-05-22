@@ -1,0 +1,43 @@
+---
+layout: default
+---
+<article class="concert-page">
+    <header class="concert-header">
+        <h1>{{ page.title }}</h1>
+        <div class="concert-meta">
+            <p><strong>Date:</strong> {{ page.date | date: "%B %d, %Y" }}</p>
+            <p><strong>Time:</strong> {{ page.time }}</p>
+            <p><strong>Location:</strong> {{ page.location }}</p>
+            <p><strong>Address:</strong> {{ page.address }}</p>
+        </div>
+    </header>
+
+    <div class="concert-content">
+        {{ content }}
+    </div>
+
+    <div class="concert-navigation">
+        {% assign concerts = site.concerts | sort: 'date' | reverse %}
+        {% for concert in concerts %}
+            {% if concert.date > page.date %}
+                {% assign next_concert = concert %}
+                {% break %}
+            {% endif %}
+        {% endfor %}
+        {% for concert in concerts reversed %}
+            {% if concert.date < page.date %}
+                {% assign prev_concert = concert %}
+                {% break %}
+            {% endif %}
+        {% endfor %}
+
+        <div class="concert-nav-links">
+            {% if prev_concert %}
+                <a href="{{ prev_concert.url | relative_url }}" class="prev-concert">&larr; Previous Concert</a>
+            {% endif %}
+            {% if next_concert %}
+                <a href="{{ next_concert.url | relative_url }}" class="next-concert">Next Concert &rarr;</a>
+            {% endif %}
+        </div>
+    </div>
+</article> 

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{{ site.description }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <link rel="icon" type="image/x-icon" href="{{ '/assets/images/favicon.ico' | relative_url }}">
+    {% seo %}
+</head>
+<body>
+    <!-- Modern Navigation Bar -->
+    <nav class="main-nav">
+        <div class="nav-inner">
+            <a href="{{ '/' | relative_url }}" class="nav-logo">
+                <img src="{{ '/assets/images/logo-placeholder.svg' | relative_url }}" alt="{{ site.title }}" class="logo-img">
+            </a>
+            <div class="nav-links">
+                <a href="{{ '/memberships' | relative_url }}">Memberships</a>
+                <a href="{{ '/spaces' | relative_url }}">Spaces</a>
+                <a href="{{ '/blog' | relative_url }}">Blog</a>
+                <a href="{{ '/contact' | relative_url }}">Contact</a>
+            </div>
+            <a href="{{ '/register' | relative_url }}" class="button nav-signup">Sign Up</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Carousel) -->
+    <header class="hero hero-carousel">
+        <div class="hero-carousel-inner">
+            <div class="hero-slide active" style="background-image: url('https://placehold.co/900x500?text=Hero+Image+1');"></div>
+            <div class="hero-slide" style="background-image: url('https://placehold.co/900x500?text=Hero+Image+2');"></div>
+            <div class="hero-slide" style="background-image: url('https://placehold.co/900x500?text=Hero+Image+3');"></div>
+            <div class="hero-arrows">
+                <button class="hero-arrow hero-arrow-left" aria-label="Previous slide">&#8592;</button>
+                <button class="hero-arrow hero-arrow-right" aria-label="Next slide">&#8594;</button>
+            </div>
+            <div class="hero-overlay">
+                <div class="hero-content">
+                    <h1>Create <span class="hero-accent">Your</span><br><span class="hero-accent">Flow</span> & Focus.</h1>
+                    <p class="hero-subtitle">Your workspace should do more than just look good—it should feel good too. That's why we've designed a space that helps you stay focused, creative, and inspired every step of the way.</p>
+                    <a href="{{ '/register' | relative_url }}" class="button hero-cta">Join today</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Card -->
+    <main class="site-content">
+        <div class="central-card wide">
+            {{ content }}
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.facebook.com/groups/183579296312/" target="_blank" rel="noopener noreferrer">
+                    <img src="{{ '/assets/images/facebook_logo.png' | relative_url }}" alt="Facebook" class="social-icon">
+                </a>
+            </div>
+            <p class="copyright">&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Add carousel script -->
+    <script>
+        (function() {
+          const slides = document.querySelectorAll('.hero-slide');
+          const left = document.querySelector('.hero-arrow-left');
+          const right = document.querySelector('.hero-arrow-right');
+          let idx = 0;
+          let timer = null;
+        
+          function showSlide(i) {
+            slides.forEach((slide, j) => slide.classList.toggle('active', j === i));
+          }
+        
+          function nextSlide() {
+            idx = (idx + 1) % slides.length;
+            showSlide(idx);
+          }
+        
+          function prevSlide() {
+            idx = (idx - 1 + slides.length) % slides.length;
+            showSlide(idx);
+          }
+        
+          function startAutoCycle() {
+            if (timer) clearInterval(timer);
+            timer = setInterval(nextSlide, 10000); // 10 seconds
+          }
+        
+          left && left.addEventListener('click', () => {
+            prevSlide();
+            startAutoCycle();
+          });
+          right && right.addEventListener('click', () => {
+            nextSlide();
+            startAutoCycle();
+          });
+        
+          // Start auto-cycling on page load
+          showSlide(idx);
+          startAutoCycle();
+        })();
+        </script>
+</body>
+</html> 

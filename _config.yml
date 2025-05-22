@@ -1,0 +1,32 @@
+title: Ravenna String Orchestras
+description: A community orchestra based in Seattle performing classical and contemporary music quarterly
+baseurl: ""
+url: "https://ravennastrings.org"
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+
+# Collections
+collections:
+  concerts:
+    output: true
+    permalink: /concerts/:title/
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "concerts"
+    values:
+      layout: "concert"
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git
+  - .github
+  - .gitignore 

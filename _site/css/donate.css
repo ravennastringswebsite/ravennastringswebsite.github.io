@@ -1,0 +1,8 @@
+#donate-button-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+#donate-button-wrapper input[name="submit"] {
+    width: 150px;
+}

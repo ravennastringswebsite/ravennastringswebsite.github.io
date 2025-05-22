@@ -1,0 +1,801 @@
+:root {
+    --primary-color: #2C5282;  /* Rich blue */
+    --primary-light: #4299E1;  /* Lighter blue for hover states */
+    --secondary-color: #2D3748;  /* Dark slate */
+    --background-color: #e1f3e8;  /* Light green background */
+    --text-color: #2D3748;  /* Dark slate for text */
+    --link-color: #2C5282;  /* Matching primary color */
+    --header-height: 80px;
+    --content-width: 1200px;
+    --border-radius: 28px; /* Increased for playful, rounded look */
+    --button-radius: 999px; /* Pill-shaped buttons */
+    --spacing-unit: 1.25rem;
+    --transition-speed: 0.3s;
+    --card-background: #FFFFFF;
+    --border-color: #E2E8F0;
+    --hover-background: rgba(66, 153, 225, 0.1);
+    --nav-height: 70px;
+    --accent-color: #eaff4b; /* Lime/yellow accent */
+    --accent-color-hover: #d4e900;
+    --box-shadow: 0 4px 24px rgba(44, 82, 130, 0.10), 0 1.5px 6px rgba(0,0,0,0.04);
+}
+
+/* Modern CSS Reset */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base Styles */
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Quicksand', sans-serif;
+    color: var(--primary-color);
+    margin-bottom: var(--spacing-unit);
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+h1 { 
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+h2 { 
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+h3 { 
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+h4 { 
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+h5 { 
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+h6 { 
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+p {
+    margin-bottom: var(--spacing-unit);
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+/* Layout */
+.container {
+    width: 100%;
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-unit);
+}
+
+/* Top Navigation */
+.top-nav {
+    background-color: rgba(255, 255, 255, 0.7);  /* More translucent */
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: var(--nav-height);
+}
+
+.nav-content {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0;
+    max-width: var(--content-width);
+    margin: 0 auto;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+    margin-right: 2rem;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.nav-links a {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--text-color);  /* Using the dark text color */
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    transition: all var(--transition-speed);
+    font-size: 1rem;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);  /* Change to primary color on hover */
+    background-color: var(--hover-background);
+}
+
+.mobile-menu-button {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.mobile-menu-button span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition-speed);
+}
+
+/* Banner */
+.banner {
+    margin-top: 0;  /* Remove the margin that was pushing it down */
+    width: 100%;
+    background-color: var(--card-background);
+    padding: 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+.banner-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Hero Section */
+.hero {
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    background: linear-gradient(120deg, rgba(234,255,75,0.18) 0%, rgba(66,153,225,0.10) 100%), url('/assets/images/banner.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 480px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    padding: 3rem 2rem;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+    background: rgba(255,255,255,0.85);
+    border-radius: var(--border-radius);
+    padding: 2.5rem 2rem;
+    box-shadow: 0 2px 16px rgba(44, 82, 130, 0.08);
+    max-width: 520px;
+}
+
+.hero h1 {
+    font-size: 2.8rem;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: var(--secondary-color);
+    margin-bottom: 2rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.button, button, input[type="submit"] {
+    border-radius: var(--button-radius);
+    background: var(--accent-color);
+    color: #222;
+    font-weight: 700;
+    padding: 0.75em 2.25em;
+    font-size: 1.1rem;
+    border: none;
+    box-shadow: 0 2px 8px rgba(44, 82, 130, 0.10);
+    transition: background var(--transition-speed), color var(--transition-speed), box-shadow var(--transition-speed);
+    cursor: pointer;
+    outline: none;
+}
+
+.button:hover, button:hover, input[type="submit"]:hover {
+    background: var(--accent-color-hover);
+    color: #111;
+    box-shadow: 0 6px 24px rgba(44, 82, 130, 0.15);
+}
+
+/* Main Content */
+.site-content {
+    padding: 3rem 0;
+    min-height: calc(100vh - var(--nav-height) - 100px);
+    margin-top: var(--nav-height);  /* Add margin to account for fixed nav */
+}
+
+/* Concert Items */
+.concert-item {
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    background: var(--card-background);
+    padding: 2rem 1.5rem;
+    margin-bottom: 2rem;
+    transition: transform var(--transition-speed);
+    border: 1px solid var(--border-color);
+}
+
+.concert-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-color: var(--primary-light);
+}
+
+.concert-date {
+    font-weight: 600;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--secondary-color);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 2px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    transition: border-color var(--transition-speed);
+    background-color: var(--card-background);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* Footer */
+.site-footer {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 3rem 0;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.social-links {
+    margin-bottom: 1.5rem;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    transition: transform var(--transition-speed);
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    :root {
+        --content-width: 90%;
+    }
+    
+    h1 { font-size: 2.25rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.5rem; }
+}
+
+@media (max-width: 768px) {
+    .nav-content {
+        padding: 0 0.5rem;
+    }
+    
+    .nav-logo {
+        padding-left: 0;
+        margin-right: 1rem;
+    }
+    
+    .nav-links {
+        margin-left: 0;
+    }
+
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        background-color: var(--card-background);
+        flex-direction: column;
+        padding: 1rem;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem;
+    }
+
+    .mobile-menu-button {
+        display: flex;
+    }
+
+    .hero {
+        height: 500px;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .logo-img {
+        height: 35px;
+    }
+
+    .banner-img {
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --spacing-unit: 0.75rem;
+    }
+
+    .logo-img {
+        height: 30px;
+    }
+
+    .hero {
+        height: 400px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .banner-img {
+        height: auto;
+    }
+}
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+
+/* Add/override rounded corners and shadows */
+.container, .banner, .site-content, .concert-item, .form-group, .hero, .banner-img, .card, .footer-content {
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+img, .banner-img, .logo-img {
+    border-radius: var(--border-radius);
+}
+
+/* Pill-shaped, bold buttons with accent color */
+.button, button, input[type="submit"] {
+    border-radius: var(--button-radius);
+    background: var(--accent-color);
+    color: #222;
+    font-weight: 700;
+    padding: 0.75em 2.25em;
+    font-size: 1.1rem;
+    border: none;
+    box-shadow: 0 2px 8px rgba(44, 82, 130, 0.10);
+    transition: background var(--transition-speed), color var(--transition-speed), box-shadow var(--transition-speed);
+    cursor: pointer;
+    outline: none;
+}
+.button:hover, button:hover, input[type="submit"]:hover {
+    background: var(--accent-color-hover);
+    color: #111;
+    box-shadow: 0 6px 24px rgba(44, 82, 130, 0.15);
+}
+
+/* Secondary button style */
+.button.secondary {
+    background: #fff;
+    color: var(--primary-color);
+    border: 2px solid var(--accent-color);
+}
+.button.secondary:hover {
+    background: var(--accent-color);
+    color: #222;
+}
+
+/* Fun, circular nav arrows (if you add them) */
+.nav-arrow {
+    background: var(--accent-color);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(44, 82, 130, 0.10);
+    border: none;
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background var(--transition-speed);
+}
+.nav-arrow:hover {
+    background: var(--accent-color-hover);
+}
+
+/* Spacing tweaks for open feel */
+.site-content > .container {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
+
+/* --- Modern Navigation Bar --- */
+.main-nav {
+    width: 100%;
+    background: #fff;
+    box-shadow: 0 2px 16px rgba(44, 82, 130, 0.07);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    padding: 0.5rem 0;
+}
+.nav-inner {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+.nav-logo {
+    display: flex;
+    align-items: center;
+    margin-right: 2rem;
+}
+.logo-img {
+    height: 48px;
+    width: auto;
+    border-radius: var(--border-radius);
+}
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    flex: 1;
+    justify-content: center;
+}
+.nav-links a {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 600;
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: var(--border-radius);
+    transition: background var(--transition-speed), color var(--transition-speed);
+}
+.nav-links a:hover {
+    background: var(--hover-background);
+    color: var(--primary-color);
+}
+.button.nav-signup {
+    margin-left: 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 0.7em 2em;
+    border-radius: var(--button-radius);
+    box-shadow: 0 2px 8px rgba(44, 82, 130, 0.10);
+}
+
+/* --- Hero Section --- */
+.hero.full-bleed {
+    width: 100vw;
+    min-height: 540px;
+    margin-top: 80px;
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+.hero-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('/assets/images/banner.gif') center/cover no-repeat;
+    filter: brightness(0.85) blur(0.5px);
+    z-index: 1;
+}
+.hero-overlay {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 3rem 0 3rem 5vw;
+}
+.hero-content {
+    background: rgba(255,255,255,0.92);
+    border-radius: var(--border-radius);
+    padding: 2.5rem 2.5rem 2.5rem 2rem;
+    box-shadow: 0 2px 16px rgba(44, 82, 130, 0.08);
+    max-width: 480px;
+    min-width: 320px;
+}
+.hero-content h1 {
+    font-size: 2.7rem;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 1.2rem;
+    line-height: 1.1;
+}
+.hero-accent {
+    font-family: 'Quicksand', monospace;
+    font-weight: 900;
+    letter-spacing: 0.03em;
+    font-size: 2.8rem;
+    color: var(--secondary-color);
+    background: var(--hover-background);
+    border-radius: var(--border-radius);
+    padding: 0 0.3em;
+    display: inline-block;
+}
+.hero-subtitle {
+    font-size: 1.15rem;
+    color: var(--secondary-color);
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+.hero-cta {
+    font-size: 1.15rem;
+    font-weight: 700;
+    padding: 0.8em 2.5em;
+    border-radius: var(--button-radius);
+    box-shadow: 0 2px 8px rgba(44, 82, 130, 0.10);
+}
+
+/* --- Central Card --- */
+.central-card {
+    background: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    max-width: 700px;
+    margin: -4rem auto 3rem auto;
+    padding: 2.5rem 2rem;
+    position: relative;
+    z-index: 10;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+    .nav-inner { padding: 0 1rem; }
+    .hero-overlay { padding: 2rem 0 2rem 2vw; }
+    .hero-content { padding: 2rem 1rem; }
+    .central-card { padding: 1.5rem 0.5rem; }
+}
+@media (max-width: 600px) {
+    .main-nav { padding: 0.25rem 0; }
+    .nav-inner { flex-direction: column; gap: 0.5rem; }
+    .nav-links { gap: 1rem; justify-content: center; }
+    .button.nav-signup { margin-left: 0; margin-top: 0.5rem; }
+    .hero.full-bleed { min-height: 340px; margin-top: 60px; }
+    .hero-content h1, .hero-accent { font-size: 1.5rem; }
+    .central-card { margin: -2rem auto 2rem auto; }
+}
+
+/* Remove old nav/banner styles if needed */
+.top-nav, .banner, .banner-img, .site-content > .container.card { display: none !important; }
+
+/* --- Hero Carousel --- */
+.hero.hero-carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 600px;
+    max-width: 50vw;
+    margin: 100px auto 3rem auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    position: relative;
+    background: none;
+    overflow: visible;
+}
+.hero-carousel-inner {
+    position: relative;
+    width: 100%;
+    min-height: 540px;
+    max-width: 75vw;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+.hero-slide {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: 1;
+    border-radius: var(--border-radius);
+}
+.hero-slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+.hero-arrows {
+    position: absolute;
+    right: 28px;
+    bottom: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    z-index: 20;
+}
+.hero-arrow {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    max-width: 48px;
+    max-height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent-color);
+    box-shadow: 0 2px 8px rgba(44, 82, 130, 0.10);
+    border: none;
+    color: var(--primary-color);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: background var(--transition-speed);
+    opacity: 0.92;
+    padding: 0;
+}
+.hero-arrow:hover {
+    background: var(--accent-color-hover);
+}
+/* Remove old absolute positioning for arrows */
+.hero-arrow-left, .hero-arrow-right {
+    position: static;
+    left: unset;
+    right: unset;
+    top: unset;
+    transform: none;
+}
+
+/* --- Widened Central Card --- */
+.central-card.wide {
+    max-width: 900px;
+    padding: 3rem 2.5rem;
+}
+
+@media (max-width: 1000px) {
+    .hero.hero-carousel, .hero-carousel-inner { max-width: 98vw; }
+    .central-card.wide { max-width: 98vw; }
+}
+@media (max-width: 700px) {
+    .hero.hero-carousel, .hero-carousel-inner { min-height: 320px; }
+    .hero-content { padding: 1.2rem 0.7rem; }
+    .central-card.wide { padding: 1.2rem 0.7rem; }
+} 
