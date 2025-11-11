@@ -16,6 +16,15 @@
 </head>
 <body>
 
+<!-- Concert Popup -->
+<div id="concertPopup" class="concert-popup">
+    <div class="concert-popup-content">
+        <span class="close-popup">&times;</span>
+        <h3 style="color: #a24416; margin-top: 0; margin-bottom: 15px; font-size: 18px;">Concert on Nov 19th 7:30 at St. Andrew's Episcopal Church</h3>
+        <img src="image/ravennaflyer.jpeg" alt="Ravenna Strings Concert - November 19th, 2025">
+    </div>
+</div>
+
 <!--CHANGES BELOW NEED TO BE REPLACED IN ALL PAGES-->
 <header>
     <div id="header-container">
@@ -75,6 +84,45 @@
     </tbody>
   </table>
 </div>
+
+<script>
+// Show popup when page loads with animation
+window.onload = function() {
+    var popup = document.getElementById('concertPopup');
+    popup.style.display = 'block';
+    
+    // Small delay to ensure display is set before animation
+    setTimeout(function() {
+        popup.classList.add('show');
+    }, 50);
+};
+
+// Close popup with animation when X is clicked
+document.querySelector('.close-popup').onclick = function() {
+    closePopup();
+};
+
+// Close popup with animation when clicking outside the content
+window.onclick = function(event) {
+    var popup = document.getElementById('concertPopup');
+    if (event.target == popup) {
+        closePopup();
+    }
+};
+
+// Function to close popup with animation
+function closePopup() {
+    var popup = document.getElementById('concertPopup');
+    popup.classList.remove('show');
+    popup.classList.add('closing');
+    
+    // Hide popup after animation completes
+    setTimeout(function() {
+        popup.style.display = 'none';
+        popup.classList.remove('closing');
+    }, 300);
+}
+</script>
 
 </body>
 </html>
