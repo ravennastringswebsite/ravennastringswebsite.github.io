@@ -105,22 +105,25 @@ p.exclamation {
 }
 
 .concert-popup-content {
-    position: relative;
+    position: absolute;
     background-color: #fefefe;
-    margin: 5% auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
     padding: 20px;
     border-radius: 10px;
-    width: 90%;
-    max-width: 600px;
+    width: auto;
+    height: auto;
+    max-width: 640px;
+    max-height: 90vh;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-    transform: scale(0.7) translateY(-50px);
     opacity: 0;
     transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .concert-popup.show .concert-popup-content {
-    transform: scale(1) translateY(0);
+    transform: translate(-50%, -50%) scale(1);
     opacity: 1;
 }
 
@@ -129,7 +132,7 @@ p.exclamation {
 }
 
 .concert-popup.closing .concert-popup-content {
-    transform: scale(0.9) translateY(20px);
+    transform: translate(-50%, -50%) scale(0.9);
     opacity: 0;
     transition: all 0.3s ease-out;
 }
@@ -137,6 +140,8 @@ p.exclamation {
 .concert-popup img {
     width: 100%;
     height: auto;
+    max-height: 85vh;
+    object-fit: contain;
     border-radius: 5px;
 }
 
