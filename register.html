@@ -1,104 +1,116 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <title>Register</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register | The Ravenna String Orchestras</title>
 
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="css/donate.css">
-  <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="scripts/site.js" defer></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
-  <meta http-equiv="content-type" content="text/html; charset=windows-1252">
-  <meta name="description" content="Ravenna Strings is a community orchestra based in Seattle. Our musicians perform classical and contemporary music quarterly.">
-  <meta name="keywords" content="Ravenna Strings Orchestra, Ravenna Strings, Seattle, Orchestra, Classical Music, Contemporary Music, Community Orchestra">
-  <meta name="robots" content="noindex, nofollow">
-  <meta property="og:title" content="The Ravenna String Orchestras Home">
-  <meta property="og:description" content="Ravenna Strings is a community orchestra based in Seattle. Our musicians perform classical and contemporary music quarterly.">
-  <meta property="og:image" content="https://ravennastrings.org/image/PanoramaOrchestra.jpg">
-
-  <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+    <meta name="description" content="Ravenna Strings is a community orchestra based in Seattle. Our musicians perform classical and contemporary music quarterly.">
+    <meta name="keywords" content="Ravenna Strings Orchestra, Ravenna Strings, Seattle, Orchestra, Classical Music, Contemporary Music, Community Orchestra">
+    <meta property="og:title" content="Register | The Ravenna String Orchestras">
+    <meta property="og:description" content="Ravenna Strings is a community orchestra based in Seattle. Our musicians perform classical and contemporary music quarterly.">
+    <meta property="og:image" content="https://ravennastrings.org/image/banner.gif">
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
 </head>
-
 <body>
-<!--CHANGES BELOW NEED TO BE REPLACED IN ALL PAGES-->
-<header>
-  <div id="header-container">
-    <div id="header-img"><a class="image-link" href="index.html"><img src="image/banner.gif" alt=""></a></div>
-    <div id="header-links">
-      <div class="header-links-row">
-        <a href="The_RSO.html" class="header-link">The Ravenna Strings</a>
-        <a href="conductors.html" class="header-link">Conductors</a>
-        <a href="The_R2SO.html" class="header-link">The Ravenna String Sinfonia</a>
-      </div>
-      <div class="header-links-row">
-        <a href="register.html" class="header-link">Register</a>
-        <a href="concert.html" class="header-link">Concerts & Schedules</a>
-        <a href="About_Us.html" class="header-link">Our Story</a>
-        <a href="donate.html" class="header-link">Donate</a>
-      </div>
-    </div>
-  </div>
+
+<!--HEADER: SAME ON EVERY PAGE. COPY CHANGES TO ALL PAGES
+    (except aria-current="page", which marks the page you're on)-->
+<header class="site-bar">
+    <a class="site-logo" href="index.html"><img src="image/rs_logo_small.jpg" alt="Ravenna Strings home" width="160" height="225"></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-links">
+        <span class="menu-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="site-links" id="site-links" aria-label="Main">
+        <a href="concert.html">Concerts &amp; Schedules</a>
+        <a href="register.html" aria-current="page">Register</a>
+        <a href="About_Us.html">Our Story</a>
+        <a href="orchestras.html">Our Orchestras</a>
+        <a class="site-donate" href="donate.html">Donate</a>
+    </nav>
 </header>
-<!--CHANGES ABOVE NEED TO BE REPLACE IN ALL PAGES-->
 
-<div class="text-container">
-  <h2>Register</h2>
-  <br>
-  <p class="left-align">
-<p><strong>Welcome to Ravenna Strings!</strong></p>
+<!--END HEADER-->
 
-<p>
-  Click <strong>Register</strong> below to register and pay through Stripe.
-</p>
+<main class="front">
+    <div class="sheets">
+        <article class="page-sheet">
+            <h1>Register</h1>
 
-<table style="margin: 0 auto; border-collapse: collapse; text-align: center;">
-  <thead>
-    <tr>
-      <th style="border: 1px solid #999; padding: 8px 16px;"></th>
-      <th style="border: 1px solid #999; padding: 8px 16px;">Regular</th>
-      <th style="border: 1px solid #999; padding: 8px 16px;">Reduced</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th style="border: 1px solid #999; padding: 8px 16px;">One term</th>
-      <td style="border: 1px solid #999; padding: 8px 16px;">$150</td>
-      <td style="border: 1px solid #999; padding: 8px 16px;">$90</td>
-    </tr>
-    <tr>
-      <th style="border: 1px solid #999; padding: 8px 16px;">Full season (3 terms)</th>
-      <td style="border: 1px solid #999; padding: 8px 16px;">$450</td>
-      <td style="border: 1px solid #999; padding: 8px 16px;">$270</td>
-    </tr>
-  </tbody>
-</table>
+            <p><strong>Welcome to Ravenna Strings!</strong></p>
 
-<p>
-  <strong>Reduced</strong> fees are for seniors, students, etc.
-</p>
+            <p>
+                Click <strong>Register</strong> below to register and pay through Stripe.
+            </p>
 
-<p>
-  To pay a different amount, click <strong>Change amount</strong> in Stripe.
-  This can be used for fewer sessions, an additional contribution, or other circumstances.
-</p>
+            <table class="price-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Regular</th>
+                        <th>Reduced</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>One term</th>
+                        <td>$150</td>
+                        <td>$90</td>
+                    </tr>
+                    <tr>
+                        <th>Full season (3 terms)</th>
+                        <td>$450</td>
+                        <td>$270</td>
+                    </tr>
+                </tbody>
+            </table>
 
-<p>
-  <strong>Please include your name, instrument, and orchestra (Monday or Thursday).</strong>
-</p>
+            <p>
+                <strong>Reduced</strong> fees are for seniors, students, etc.
+            </p>
 
-  </p>
-  <br>
-<script async
-  src="https://js.stripe.com/v3/buy-button.js">
-</script>
+            <p>
+                To pay a different amount, click <strong>Change amount</strong> in Stripe.
+                This can be used for fewer sessions, an additional contribution, or other circumstances.
+            </p>
 
-<stripe-buy-button
-  buy-button-id="buy_btn_1TDQt4FUwXsqxbcqkNO9cCNk"
-  publishable-key="pk_live_51OAylmFUwXsqxbcqQMpQEJ8a4EEpIte8jaNJGZKBKdRAf9V5GU7TztFXrarbpKq79GpojRjXs215mZ2vDt9Erm3f00jwCznAHc"
->
-</stripe-buy-button>
-</div>
+            <p>
+                <strong>Please include your name, instrument, and orchestra (Monday or Thursday).</strong>
+            </p>
+
+            <div class="center">
+                <stripe-buy-button
+                    buy-button-id="buy_btn_1TDQt4FUwXsqxbcqkNO9cCNk"
+                    publishable-key="pk_live_51OAylmFUwXsqxbcqQMpQEJ8a4EEpIte8jaNJGZKBKdRAf9V5GU7TztFXrarbpKq79GpojRjXs215mZ2vDt9Erm3f00jwCznAHc"
+                >
+                </stripe-buy-button>
+            </div>
+        </article>
+
+        <div class="desk-column">
+            <figure class="snapshot magnet">
+                <img src="image/photos/filler-2.jpg" alt="The orchestra in concert">
+            </figure>
+        </div>
+    </div>
+</main>
+<div class="front-pole" aria-hidden="true"></div>
+
+<!--FOOTER: SAME ON EVERY PAGE. COPY CHANGES TO ALL PAGES-->
+<footer>
+    <a class="donate-button" href="donate.html">Donate</a>
+    <a href="mailto:ravennastrings@gmail.com">ravennastrings@gmail.com</a>
+    <a href="https://www.facebook.com/groups/183579296312/"><img src="image/facebook_logo.png" alt="Our Facebook group"></a>
+</footer>
+<!--END FOOTER-->
 
 </body>
-
 </html>

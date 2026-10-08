@@ -1,93 +1,1094 @@
-.text-container {
-    width: 640px;
-    color: #a24416;
-    text-align: center;
-    margin: 0 auto;
-    padding: 0 10px;
-    font-size: large;
+:root {
+    --stand: #31312f;
+    --stand-dark: #0d0f10;
+    --paper: #ffdeb3;
+    --ink: #2b2a28;
+    --accent: #a24416;
+    --sheet-font: 'Playfair Display', Georgia, serif;
+    --bar: 108px;   /* height of the logo + page names bar */
 }
 
-.text-container img {
-    float: right;
-    margin-left: 20px;
+* {
+    box-sizing: border-box;
 }
 
-p.exclamation {
-    color: black;
-    font-size: larger;
-}
-
-.left-align {
-    text-align: start;
-}
-
-#conductor-img-container {
-    text-align: center;
-}
-
-#conductor-img {
-    height: 500px;
-}
-
-.image-link {
+body {
+    overflow-x: clip;   /* the leaning stand is a touch wider at the bottom */
     margin: 0;
-    padding: 0;
-    line-height: 0;
+    padding: 0 16px;
+    background: #fff;
+    color: var(--ink);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 18px;
+    line-height: 1.55;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: var(--accent);
+}
+
+h1, h2, h3 {
+    font-family: var(--sheet-font);
+    color: var(--stand);
+    line-height: 1.2;
+}
+
+/* ---------- Header bar: logo + page names ---------- */
+
+.site-bar {
+    --logo-h: calc(var(--bar) - 8px);
+    position: relative;
+    height: var(--bar);
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+/* the line along the bottom of the header, under the logo and page names */
+.site-bar::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--stand);
+}
+
+.site-logo img {
+    display: block;
+    height: var(--logo-h);
+    width: auto;
+}
+
+.site-links {
+    margin-left: auto;   /* links sit at the right-hand end of the bar */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 28px;
+    font-family: var(--sheet-font);
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.site-links a {
+    color: var(--stand);
     text-decoration: none;
 }
 
-.image-link img {
+.site-links a:hover,
+.site-links a:focus-visible,
+.site-links a[aria-current="page"] {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* Donate as a little paper note, like the one on the stand */
+.site-links .site-donate {
+    padding: 6px 16px;
+    background: var(--paper);
+    border: 2px solid #000;
+    color: #000;
+    text-decoration: none;
+    text-transform: uppercase;
+    transform: rotate(-3deg);
+    transition: transform 0.2s ease;
+}
+
+.site-links .site-donate:hover,
+.site-links .site-donate:focus-visible {
+    color: #000;
+    text-decoration: none;
+    transform: rotate(-3deg) translateY(-2px);
+}
+
+/* hamburger button: phones only (see mobile section) */
+.menu-toggle {
+    display: none;
+}
+
+/* ---------- The music stand ----------
+   All positions are percentages of the stand artwork (image/stand/stand.svg),
+   so everything scales together. Mobile layout is further down. */
+
+.stand {
+    position: relative;
+    container-type: inline-size;
+    width: 100%;
+    max-width: 720px;
+    margin: 24px auto 0;
+    aspect-ratio: 294 / 223;
+}
+
+/* Home page: zoomed in so the stand fills the screen and the pole runs
+   off the bottom. 0.87 = how far down the stand art the desk ends. */
+body.home {
+    height: 100vh;
+    height: 100svh;
+    overflow: hidden;
+}
+
+.home main {
+    margin: 0;
+}
+
+.home .stand {
+    max-width: none;
+    margin-top: 12px;
+    width: min(100%, (100svh - var(--bar) - 12px) / 0.87 * 294 / 223);
+}
+
+.stand-art {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* Sheets of music sticking out of the stand = main navigation */
+.sheet {
+    position: absolute;
+    z-index: 1;
+    transition: transform 0.25s ease;
+}
+
+.sheet::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: center / 100% 100% no-repeat;
+}
+
+/* Labels and title are drawn with the letter shapes from the design
+   (image/stand/label-*.svg, title-*.svg). The real text stays in the HTML
+   for screen readers and search engines, just invisible. */
+.sheet span,
+.stand-title span {
+    position: absolute;
+    display: block;
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    color: transparent;
+    font-size: 0;
+}
+
+.sheet:hover,
+.sheet:focus-visible {
+    transform: translateY(-2.5cqw);
+}
+
+.sheet:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.sheet-1 { left: 1.70%;  top: 1.35%; width: 29.31%; height: 43.33%; }
+.sheet-2 { left: 21.09%; top: 6.77%; width: 23.17%; height: 37.89%; }
+.sheet-3 { left: 47.15%; top: 8.28%; width: 20.30%; height: 37.51%; z-index: 1; }
+.sheet-4 { left: 65.70%; top: 4.75%; width: 21.35%; height: 38.31%; z-index: 0; }
+
+/* sheet shapes with the clefs and staff lines from the design */
+.sheet-1::before { background-image: url(../image/stand/sheet-1-full.svg); }
+.sheet-2::before { background-image: url(../image/stand/sheet-2-full.svg); }
+.sheet-3::before { background-image: url(../image/stand/sheet-3-full.svg); }
+.sheet-4::before { background-image: url(../image/stand/sheet-4-full.svg); }
+
+.sheet-1 span { background-image: url(../image/stand/label-1.svg); aspect-ratio: 46.76 / 23.3; }
+.sheet-2 span { background-image: url(../image/stand/label-2.svg); aspect-ratio: 36.36 / 9.41; }
+.sheet-3 span { background-image: url(../image/stand/label-3.svg); aspect-ratio: 44.78 / 9.39; }
+.sheet-4 span { background-image: url(../image/stand/label-4.svg); aspect-ratio: 51.17 / 17.5; }
+
+/* label positions within each sheet, from the design */
+.sheet-1 span { left: 14.32%; top: 7.13%; width: 54.26%; }
+.sheet-2 span { left: 24.31%; top: 9.98%; width: 53.37%; }
+.sheet-3 span { left: 17.26%; top: 6.73%; width: 75.05%; }
+.sheet-4 span { left: 12.52%; top: 7.15%; width: 81.52%; }
+
+/* Orchestra name stenciled on the stand */
+.stand-title {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    /* clicks pass through to the sheets outside the words themselves */
+    pointer-events: none;
+}
+
+.stand-title span {
+    pointer-events: auto;
+}
+
+.stand-title:focus-visible span {
+    outline: 3px solid var(--paper);
+}
+
+.t-the     { background-image: url(../image/stand/title-the.svg);        aspect-ratio: 44.2 / 16.94; }
+.t-ravenna { background-image: url(../image/stand/title-ravenna.svg);    aspect-ratio: 103.18 / 16.29; }
+.t-strings { background-image: url(../image/stand/title-strings.svg);    aspect-ratio: 84.31 / 17.04; }
+.t-orch    { background-image: url(../image/stand/title-orchestras.svg); aspect-ratio: 126.6 / 17.9; }
+
+/* title positions on the stand, from the design */
+.t-the     { left: 10.58%; top: 24.95%; width: 15.03%; }
+.t-ravenna { left: 10.11%; top: 35.44%; width: 35.10%; }
+.t-strings { left: 50.53%; top: 35.76%; width: 28.68%; }
+.t-orch    { left: 49.39%; top: 46.08%; width: 43.06%; }
+
+/* Printed photos (and the donate note) held on with magnets - home page */
+.print {
+    position: absolute;
+    z-index: 3;
+    margin: 0;
+    padding: 0.8cqw;
+    background: #fff;
+    box-shadow: 0 0.4cqw 0.9cqw rgba(0, 0, 0, 0.5);
+    transform: rotate(var(--tilt, 0deg));
+}
+
+.print img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.print::before {
+    content: '';
+    position: absolute;
+    top: -1.1cqw;
+    left: 50%;
+    width: 2.4cqw;
+    height: 2.4cqw;
+    margin-left: -1.2cqw;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #ff9a8a, #c0392b 55%, #7a1d14);
+    box-shadow: 0 0.3cqw 0.5cqw rgba(0, 0, 0, 0.5);
+}
+
+.print-1 { left: 14%; top: 50%; width: 23%; --tilt: -4deg; }
+.print-2 { left: 58%; top: 56%; width: 20%; --tilt: 3deg; }
+
+.note {
+    left: 81%;
+    top: 62%;
+    --tilt: 7deg;
+    padding: 1.2cqw 1.8cqw;
+    background: var(--paper);
+    border: 2px solid #000;
+    color: #000;
+    font-family: var(--sheet-font);
+    font-weight: 700;
+    font-size: 2.2cqw;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+}
+
+.note:hover,
+.note:focus-visible {
+    transform: rotate(var(--tilt)) scale(1.08);
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+/* ---------- Page content ---------- */
+
+main {
+    max-width: 680px;
+    margin: 32px auto 48px;
+}
+
+main h1,
+main h2 {
+    text-align: center;
+}
+
+.text-container > img {
+    float: right;
+    margin: 0 0 12px 20px;
+}
+
+p.exclamation {
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.center {
+    text-align: center;
+}
+
+.tagline {
+    text-align: center;
+    font-style: italic;
+    font-weight: bold;
+}
+
+figure {
+    margin: 32px 0;
+    text-align: center;
+}
+
+figcaption {
+    font-size: 14px;
+    color: #666;
+    text-align: right;
+}
+
+blockquote {
+    margin: 32px 0;
+    font-style: italic;
+    font-size: 20px;
+    text-align: center;
+}
+
+blockquote cite {
+    display: block;
+    font-size: 15px;
+    font-style: normal;
+    text-align: right;
+}
+
+.price-table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.price-table th,
+.price-table td {
+    border: 1px solid #999;
+    padding: 8px 16px;
+}
+
+.embed-frame {
+    display: block;
+    width: 100%;
+    max-width: 960px;
+    height: 70vh;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+}
+
+.wide {
+    max-width: 960px;
+}
+
+/* ---------- Inner pages: the front of the stand ----------
+   Page content is printed on sheets of music resting on the stand.
+   Photos are magneted to the stand or taped onto the sheets. */
+
+main.front {
+    position: relative;
+    max-width: min(1400px, 100% - 16px);   /* room for the lip's overhang */
+    margin: 28px auto 0;
+    padding: 44px 36px 12px;   /* sheets run down just behind the lip */
+    /* leaning back like a real stand: pivots on the top edge, so the bottom
+       comes slightly toward you (and a little wider) */
+    z-index: 1;
+    transform: perspective(4000px) rotateX(6deg);
+    transform-origin: 50% 0;
+}
+
+/* the dark panel of the stand */
+main.front::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 22px;   /* ends where the lip begins */
+    z-index: -1;
+    background: var(--stand);
+    clip-path: polygon(0 0, 100% 8px, 100% 100%, 0 100%);
+}
+
+/* The lip at the bottom: a bent edge of sheet metal. It starts where the
+   sheets rest (full width of the stand, in front of their bottom edges)
+   and bends down toward you, hanging below the stand - its bottom edge is
+   closer to you, so it's wider and sticks out past the stand's sides.
+   Flat colours: the bent face, then the edge. */
+main.front::after {
+    content: '';
+    position: absolute;
+    left: -22px;
+    right: -22px;
+    bottom: -22px;
+    z-index: 3;
+    height: 44px;
+    background: linear-gradient(to bottom, #484649 0 38px, #0d0f10 38px);
+    clip-path: polygon(22px 0, calc(100% - 22px) 0, 100% 100%, 0 100%);
+    pointer-events: none;
+}
+
+.front-pole {
+    position: relative;   /* tucks under the stand, which overhangs it a bit */
+    z-index: 0;
+    width: 16px;
+    height: 140px;
+    margin: 0 auto;
+    background: #908f90;
+}
+
+/* Two slots side by side, every sheet the same size (letter paper).
+   Extra sheets sit off to the right; the "turn page" tabs slide over.
+   Drawn in front of the lip, since the sheets rest on it. */
+.sheets {
+    position: relative;
+    z-index: 4;
+    --gap: 40px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: calc((100% - var(--gap)) / 2);
+    column-gap: var(--gap);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    /* room for tilts, tape and shadows inside the scrolling area */
+    padding: 24px 8px 30px;
+    margin: -24px -8px -30px;
+    scroll-padding-inline: 8px;
+}
+
+.sheets::-webkit-scrollbar {
+    display: none;
+}
+
+.sheets > :nth-child(odd) {
+    scroll-snap-align: start;
+}
+
+.page-sheet,
+.desk-column {
+    aspect-ratio: 8.5 / 11;
+}
+
+.page-sheet {
+    display: flow-root;   /* contains floated photos */
+    position: relative;
+    padding: 30px 40px 32px;
+    overflow-y: auto;     /* just in case something doesn't fit */
+    scrollbar-width: thin;
+    /* the paper: slightly bent edges (image/stand/page-*.svg) */
+    background: url(../image/stand/page-1.svg) center / 100% 100% no-repeat;
+    font-size: 15.5px;
+    line-height: 1.47;
+    /* the sheets lean against the stand with their bottoms resting out on
+       the lip: they sit a little lower and further forward than the stand,
+       and tip toward you a little more than it does */
+    transform: perspective(1600px) translateY(-24px) translateZ(14px) rotateX(3.5deg) rotate(var(--tilt, 0deg));
+    transform-origin: 50% 0;
+}
+
+.sheets > .page-sheet:nth-child(even) {
+    background-image: url(../image/stand/page-2.svg);
+}
+
+.sheets > :nth-child(odd)  { --tilt: -0.5deg; }
+.sheets > :nth-child(even) { --tilt: 0.6deg; }
+
+/* photos and notes stuck straight onto the stand, in place of a sheet */
+.desk-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px 40px;
+}
+
+.page-sheet h1,
+.page-sheet h2 {
+    margin: 0 0 8px;
+}
+
+/* a five-line staff under each heading, starting with one of the
+   hand-drawn clefs from the design: treble under main headings, bass under
+   sub-headings, and the "13" marks under section headings */
+.page-sheet h1::after,
+.page-sheet h2::after {
+    content: '';
+    display: block;
+    height: 44px;
+    margin: 6px 0 0;
+    background:
+        var(--clef) 4px center / auto var(--clef-size, 44px) no-repeat,
+        url(../image/stand/staff.svg) center / 100% 26px no-repeat;
+}
+
+.page-sheet h1 { --clef: url(../image/stand/clef-treble.svg); }
+.page-sheet h2 { --clef: url(../image/stand/clef-bass.svg); --clef-size: 24px; }
+.page-sheet section h2 { --clef: url(../image/stand/clef-alto.svg); --clef-size: 24px; }
+
+/* turn-page tabs (added by scripts/site.js when a page has more sheets) */
+.page-turn {
+    position: absolute;
+    bottom: -64px;   /* hanging just below the stand and its lip */
+    z-index: 4;
+    padding: 5px 16px;
+    background: var(--paper);
+    border: 2px solid #000;
+    font-family: var(--sheet-font);
+    font-weight: 700;
+    font-size: 15px;
+    color: #000;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.page-turn-next { right: 56px; transform: rotate(2deg); }
+.page-turn-back { left: 56px;  transform: rotate(-2deg); }
+
+.page-turn-next:hover { transform: rotate(2deg) translateX(3px); }
+.page-turn-back:hover { transform: rotate(-2deg) translateX(-3px); }
+
+/* Our Orchestras */
+#conductors .snapshot.float-right {
+    width: 34%;
+}
+
+.group-when {
+    margin-top: -2px;
+    font-style: italic;
+}
+
+.details {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 4px 18px;
+    margin: 0 0 8px;
+}
+
+.details dt {
+    font-family: var(--sheet-font);
+    font-weight: 700;
+}
+
+.details dd {
+    margin: 0;
+}
+
+/* the rehearsal schedule */
+.term-intro {
+    text-align: center;
+    font-style: italic;
+}
+
+.term h3 {
+    margin: 16px 0 6px;
+    font-size: 19px;
+    border-bottom: 2px solid var(--ink);
+}
+
+.term-groups {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 40px;
+}
+
+.term h4 {
+    margin: 0 0 2px;
+    font-family: var(--sheet-font);
+    font-size: 16px;
+}
+
+.term h4 span {
+    font-family: Georgia, serif;
+    font-weight: normal;
+    font-style: italic;
+    font-size: 14px;
+}
+
+/* dates flow down two short columns, kept close together */
+.dates {
+    columns: 2 4.5em;
+    column-gap: 14px;
+    width: max-content;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-size: 15px;
+    line-height: 1.35;
+}
+
+.dates .off {
+    color: #8a7f72;
+    text-decoration: line-through;
+}
+
+.term-note {
+    margin: 4px 0 0;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.concert-date {
+    margin: 6px 0 0;
+    font-family: var(--sheet-font);
+    font-weight: 700;
+    font-size: 17px;
+}
+
+/* photos: a white-bordered print, held on with a magnet or tape */
+.snapshot {
+    position: relative;
+    margin: 0;
+    padding: 8px 8px 10px;
+    background: #fff;
+    border: 2px solid #000;
+    transform: rotate(var(--tilt, 2deg));
+}
+
+.snapshot img {
     display: block;
     width: 100%;
     height: auto;
 }
 
-.header-link:hover {
-    color: #a24416;
-}
-
-#header-container {
-    width: 700px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-}
-
-#header-container * {
-    width: 100%;
-}
-
-#header-links {
+.snapshot figcaption {
+    margin-top: 6px;
+    font-size: 13px;
+    color: #555;
     text-align: center;
-    background-color: #2f140a;
-    width: 100%;
+}
+
+.desk-column > :nth-child(odd)  { --tilt: -2deg; }
+.desk-column > :nth-child(even) { --tilt: 1.5deg; }
+
+.snapshot.magnet::before {
+    content: '';
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    width: 22px;
+    height: 22px;
+    margin-left: -11px;
+    border-radius: 50%;
+    background: #c0392b;
+    border: 2px solid #000;
+}
+
+/* sticky notes (the quotes on Our Story) */
+.post-it {
+    margin: 0;
+    padding: 30px 24px 26px;
+    background: #fff176;
+    border: 2px solid #000;
+    transform: rotate(var(--tilt, -2deg));
+    font-family: 'Caveat', 'Comic Sans MS', cursive;
+    font-size: 27px;
+    font-style: normal;
+    line-height: 1.2;
+    text-align: center;
+    color: #2b2a28;
+}
+
+.post-it cite {
+    display: block;
+    margin-top: 12px;
+    font-size: 21px;
+    font-style: normal;
+    text-align: right;
+}
+
+.post-its {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 28px;
+    margin-top: 24px;
+}
+
+/* square, like real sticky notes */
+.post-its .post-it {
+    flex: 0 0 auto;
+    width: min(205px, 50% - 14px);
+    aspect-ratio: 1;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-    padding: 25px 0;
+    justify-content: center;
+    padding: 14px 16px;
+    font-size: 21px;
+    line-height: 1.15;
 }
 
-.header-links-row a {
-    background-color: #2f140a;
-    color: #f5f5dc;
-    font-size: large;
-    transition: color 0.3s;
-    text-decoration: none !important;
+.post-its .post-it cite {
+    margin-top: 10px;
+    font-size: 17px;
 }
 
-.header-links-row a:hover {
-    color: #ffd700;
+.post-its .post-it:nth-child(odd)  { --tilt: -4deg; }
+.post-its .post-it:nth-child(even) { --tilt: 3deg; margin-top: 14px; }
+
+/* two strips of tape across the top corners */
+.snapshot.taped::before,
+.snapshot.taped::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    width: 76px;
+    height: 24px;
+    background: rgba(255, 255, 235, 0.75);
 }
 
-.header-links-row {
+.snapshot.taped::before { left: -22px;  transform: rotate(-35deg); }
+.snapshot.taped::after  { right: -22px; transform: rotate(35deg); }
+
+.page-sheet .snapshot {
+    margin: 24px 6px;
+}
+
+.page-sheet .snapshot.float-right {
+    float: right;
+    width: 40%;
+    margin: 4px 0 16px 24px;
+    --tilt: 3deg;
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 24px 0 40px;
+    border-top: 2px solid var(--stand);
     display: flex;
-    justify-content: space-around;
-    width: 100%;
-    margin: 10px 0;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 16px 28px;
+    font-size: 16px;
 }
 
-/* Concert Popup Styles */
+.donate-button {
+    display: inline-block;
+    padding: 8px 20px;
+    background: var(--paper);
+    border: 2px solid #000;
+    color: #000;
+    font-family: var(--sheet-font);
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    transform: rotate(-2deg);
+    transition: transform 0.2s ease;
+}
+
+.donate-button:hover,
+.donate-button:focus-visible {
+    transform: rotate(-2deg) translateY(-3px);
+}
+
+footer img {
+    display: block;
+    height: 36px;
+    width: auto;
+}
+
+/* ---------- Mobile: stand turned portrait, sheets stacked down the right ---------- */
+
+@media (max-width: 640px) {
+    :root {
+        --bar: 72px;
+    }
+
+    body {
+        font-size: 17px;
+    }
+
+    .site-bar {
+        position: relative;
+        gap: 14px;
+    }
+
+    /* page names wrap onto two short rows (only if the menu script didn't load) */
+    .site-links {
+        gap: 2px 14px;
+        font-size: 14px;
+        line-height: 1.35;
+    }
+
+    .site-links .site-donate {
+        padding: 0 8px;
+    }
+
+    /* hamburger menu */
+    .has-menu .menu-toggle {
+        display: block;
+        margin-left: auto;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        background: none;
+        border: 0;
+        cursor: pointer;
+    }
+
+    .menu-icon,
+    .menu-icon::before,
+    .menu-icon::after {
+        display: block;
+        position: relative;
+        width: 28px;
+        height: 3px;
+        margin: 0 auto;
+        border-radius: 2px;
+        background: var(--stand);
+        transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .menu-icon::before,
+    .menu-icon::after {
+        content: '';
+        position: absolute;
+    }
+
+    .menu-icon::before { top: -9px; }
+    .menu-icon::after  { top: 9px; }
+
+    /* turns into an X when open */
+    .menu-open .menu-icon { background-color: transparent; }
+    .menu-open .menu-icon::before { transform: translateY(9px) rotate(45deg); }
+    .menu-open .menu-icon::after  { transform: translateY(-9px) rotate(-45deg); }
+
+    .has-menu .site-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: -16px;
+        right: -16px;
+        z-index: 10;
+        margin: 0;
+        padding: 4px 24px 20px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: #fff;
+        border-bottom: 2px solid var(--stand);
+        box-shadow: 0 10px 16px rgba(0, 0, 0, 0.15);
+        font-size: 20px;
+    }
+
+    .has-menu.menu-open .site-links {
+        display: flex;
+    }
+
+    .has-menu .site-links a {
+        padding: 12px 0;
+        border-bottom: 1px solid #e4e0da;
+    }
+
+    .has-menu .site-links .site-donate {
+        align-self: flex-start;
+        margin-top: 16px;
+        padding: 6px 18px;
+        border: 2px solid #000;
+    }
+
+    /* stand runs off the left edge of the screen (cancels body padding) */
+    .stand,
+    .home .stand {
+        width: calc(100% + 16px);
+        max-width: none;
+        margin: 12px 0 0 -16px;
+        aspect-ratio: 100 / 150;
+    }
+
+    /* home: the pole runs to the bottom of the screen */
+    .home .stand {
+        aspect-ratio: auto;
+        height: calc(100svh - var(--bar) - 12px);
+    }
+
+    /* desk, swirl and hinge (image/stand/stand-mobile.svg) are a fixed size */
+    .stand-art {
+        inset: 0 auto auto 0;
+        height: auto;
+    }
+
+    /* the pole below the desk stretches to fill whatever height is left */
+    .stand::before,
+    .stand::after {
+        content: '';
+        position: absolute;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .stand::before {   /* rod */
+        left: 13.2cqw;
+        width: 2cqw;
+        top: 133cqw;
+        bottom: 0;
+        background: #908f90;
+    }
+
+    .stand::after {    /* base */
+        left: 12.4cqw;
+        width: 3.6cqw;
+        bottom: 0;
+        height: 15cqw;
+        background: #0d0f10;
+    }
+
+    /* Title: every word the same letter height (8.6cqw), staggered like the sketch */
+    .t-the     { left: 11%; top: 12cqw; width: 22.4cqw; }
+    .t-ravenna { left: 5%;  top: 28cqw; width: 54.5cqw; }
+    .t-strings { left: 10%; top: 44cqw; width: 42.5cqw; }
+    .t-orch    { left: 3%;  top: 60cqw; width: 60.8cqw; }
+
+    /* Pages: full sheets of music (the same ones as desktop) tucked behind
+       the right side of the stand at an angle. Each one covers most of the
+       page above it, so only the top strip with its label shows - except
+       Our Orchestras on the bottom, which you see (almost) whole. */
+    .sheet,
+    .sheet-3,
+    .sheet-4 {
+        left: 56%;
+        width: 44%;
+        height: auto;
+        z-index: 1;
+        transform-origin: 0 0;
+        transform: rotate(var(--tilt));
+    }
+
+    .sheet-1 { top: -1cqw; --tilt: 12deg; aspect-ratio: 86.18 / 96.62; }
+    .sheet-2 { top: 17cqw; --tilt: 15deg; aspect-ratio: 68.13 / 84.49; }
+    .sheet-3 { top: 34cqw; --tilt: 12deg; aspect-ratio: 59.67 / 83.64; }
+    .sheet-4 { top: 47cqw; --tilt: 16deg; aspect-ratio: 62.77 / 85.43; }
+
+    .sheet:hover,
+    .sheet:focus-visible {
+        transform: translateX(3cqw) rotate(var(--tilt));
+    }
+
+    /* labels moved in from the left edge of the page so they clear the stand */
+    .sheet-1 span { left: 30%; top: 8%;  width: 46%; }
+    .sheet-2 span { left: 32%; top: 9%;  width: 46%; }
+    .sheet-3 span { left: 32%; top: 7%;  width: 58%; }
+    .sheet-4 span { left: 32%; top: 7%;  width: 60%; }
+
+    /* one photo and the donate note on the stand; the other photo is a big
+       print in the space below the stand (no magnet - nothing to hold it) */
+    .print-1 { left: 23%; top: 98cqw;  width: 34%; }
+    .note    { left: 58%; top: 108cqw; font-size: 3.6cqw; }
+    .print-2 {
+        /* fills the space between the desk and the bottom of the screen,
+           as big as fits (up to nearly full width), centred */
+        top: 140cqw;
+        bottom: 3cqw;
+        left: 50%;
+        width: auto;
+        max-width: 88%;
+        aspect-ratio: 4 / 3.1;   /* width follows from the height that's left */
+        transform: translateX(-50%) rotate(-1.5deg);
+    }
+
+    .print-2 img {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: auto;
+    }
+
+    .print-2::before {
+        display: none;
+    }
+
+    main {
+        margin-top: 20px;
+    }
+
+    main.front {
+        max-width: none;
+        margin: 16px -16px 0;
+        padding: 32px 14px 30px;
+        transform: none;   /* pages are too tall on phones for the 3D lean */
+    }
+
+    main.front::after {   /* stand is edge to edge, so no overhang */
+        left: 0;
+        right: 0;
+        clip-path: none;
+    }
+
+    .front-pole {
+        height: 72px;
+    }
+
+    /* phones: sheets stack down the page at their natural height */
+    .sheets {
+        grid-auto-flow: row;
+        grid-auto-columns: auto;
+        grid-template-columns: 1fr;
+        row-gap: 32px;
+        overflow: visible;
+        margin: 0;
+        padding: 0;
+    }
+
+    .page-sheet,
+    .desk-column {
+        aspect-ratio: auto;
+        overflow: visible;
+    }
+
+    .desk-column {
+        padding: 12px;
+    }
+
+    .post-its .post-it {
+        padding: 10px;
+        font-size: 17px;
+    }
+
+    .post-its .post-it cite {
+        font-size: 14px;
+    }
+
+    .page-sheet {
+        padding: 26px 20px 32px;
+        transform: rotate(var(--tilt, 0deg));   /* too tall on phones for the 3D tip */
+    }
+
+    .page-turn {
+        display: none;
+    }
+
+    .page-sheet .snapshot.float-right {
+        width: 46%;
+        margin-left: 16px;
+    }
+
+    .text-container > img {
+        float: none;
+        display: block;
+        margin: 0 auto 16px;
+    }
+}
+
+/* short phones (e.g. iPhone SE): no room below the stand for the big photo */
+@media (max-width: 640px) and (min-aspect-ratio: 1/2) {
+    .print-2 {
+        display: none;
+    }
+}
+
+/* ---------- Concert popup (currently unused) ---------- */
+
 .concert-popup {
     display: none;
     position: fixed;
@@ -114,7 +1115,7 @@ p.exclamation {
     border-radius: 10px;
     width: auto;
     height: auto;
-    max-width: 640px;
+    max-width: min(640px, 92vw);
     max-height: 90vh;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
@@ -147,7 +1148,6 @@ p.exclamation {
 
 .close-popup {
     color: #aaa;
-    float: right;
     font-size: 28px;
     font-weight: bold;
     position: absolute;
