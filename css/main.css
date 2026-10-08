@@ -1080,6 +1080,127 @@ footer img {
     }
 }
 
+/* ---------- Phones, "sheets only" version ----------
+   Pages with class="mobile-sheets" on <body> drop the music stand on phones
+   and show just sheets of music. Remove the class to get the stand back. */
+
+@media (max-width: 640px) {
+    /* home: a pile of sheets on the page; the top one is a title page */
+    .mobile-sheets .stand-art,
+    .mobile-sheets .stand::before,
+    .mobile-sheets .stand::after {
+        display: none;
+    }
+
+    .mobile-sheets .stand-title {
+        inset: auto;
+        left: 4cqw;
+        top: 5cqw;
+        width: 64cqw;
+        height: 80cqw;
+        z-index: 3;
+        background: url(../image/stand/page-1.svg) center / 100% 100% no-repeat;
+        transform: rotate(-2deg);
+    }
+
+    /* the title set like the cover of a classical edition, in a letterpress
+       serif to match the logo (IM Fell English), with a clef and staff */
+    .mobile-sheets .stand-title {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 11cqw;
+        font-family: 'IM Fell English', Garamond, 'Times New Roman', serif;
+        color: #000;
+        text-decoration: none;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .mobile-sheets .stand-title span {
+        position: static;
+        width: auto;
+        aspect-ratio: auto;
+        background: none;
+        color: inherit;
+        line-height: 1;
+    }
+
+    .mobile-sheets .t-the {
+        font-size: 4.4cqw;
+        font-weight: 400;
+        letter-spacing: 0.4em;
+        margin-bottom: 2.5cqw;
+    }
+
+    .mobile-sheets .t-ravenna,
+    .mobile-sheets .t-strings {
+        font-size: 9.6cqw;
+        font-weight: 400;
+        letter-spacing: 0.08em;
+    }
+
+    .mobile-sheets .t-strings {
+        margin-top: 1cqw;
+    }
+
+    .mobile-sheets .t-orch {
+        margin-top: 3.5cqw;
+        padding: 1.6cqw 0;
+        border-top: 1px solid #000;
+        border-bottom: 1px solid #000;
+        font-size: 4.6cqw;
+        font-weight: 400;
+        letter-spacing: 0.3em;
+    }
+
+    .mobile-sheets .stand-title::after {
+        content: '';
+        position: absolute;
+        left: 9%;
+        right: 9%;
+        bottom: 9cqw;
+        height: 12cqw;
+        background:
+            url(../image/stand/clef-treble.svg) 0 center / auto 12cqw no-repeat,
+            url(../image/stand/staff.svg) center / 100% 8cqw no-repeat;
+    }
+
+    /* photos and the donate note are taped on, not magneted */
+    .mobile-sheets .print::before,
+    .mobile-sheets .print-2::before,
+    .mobile-sheets .snapshot.magnet::before {
+        display: block;
+        top: -2.2cqw;
+        left: 50%;
+        width: 16cqw;
+        height: 4.4cqw;
+        margin-left: -8cqw;
+        border: 0;
+        border-radius: 0;
+        background: rgba(255, 255, 235, 0.8);
+        box-shadow: none;
+        transform: rotate(-4deg);
+    }
+
+    .mobile-sheets .print-1 { left: 7%;  top: 92cqw;  width: 44%; --tilt: -4deg; }
+    .mobile-sheets .note    { left: 60%; top: 104cqw; --tilt: 6deg; }
+    .mobile-sheets .print-2 { top: 136cqw; }
+
+    /* other pages: the content sheets on the plain page, no stand */
+    .mobile-sheets main.front {
+        margin: 16px 0 0;
+        padding: 8px 2px 32px;
+        transform: none;
+    }
+
+    .mobile-sheets main.front::before,
+    .mobile-sheets main.front::after,
+    .mobile-sheets .front-pole {
+        display: none;
+    }
+}
+
 /* short phones (e.g. iPhone SE): no room below the stand for the big photo */
 @media (max-width: 640px) and (min-aspect-ratio: 1/2) {
     .print-2 {
