@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1444 44" preserveAspectRatio="none">
+  <!-- the bent sheet-metal lip at the bottom of the stand (inner pages):
+       top edge as wide as the stand, bottom edge wider; stretches to fit -->
+  <polygon points="22,0 1422,0 1444,44 0,44" fill="#484649"/>
+  <polygon points="3,38 1441,38 1444,44 0,44" fill="#0d0f10"/>
+</svg>

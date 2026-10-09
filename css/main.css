@@ -94,8 +94,8 @@ h1, h2, h3 {
 /* Donate as a little paper note, like the one on the stand */
 .site-links .site-donate {
     padding: 6px 16px;
-    background: var(--paper);
-    border: 2px solid #000;
+    border: 2px solid transparent;
+    background: url(../image/stand/paper-note.svg) center / 100% 100% no-repeat border-box;
     color: #000;
     text-decoration: none;
     text-transform: uppercase;
@@ -250,7 +250,7 @@ body.home {
     z-index: 3;
     margin: 0;
     padding: 0.8cqw;
-    background: #fff;
+    background: url(../image/stand/photo-frame-plain.svg) center / 100% 100% no-repeat;
     box-shadow: 0 0.4cqw 0.9cqw rgba(0, 0, 0, 0.5);
     transform: rotate(var(--tilt, 0deg));
 }
@@ -270,8 +270,8 @@ body.home {
     width: 2.4cqw;
     height: 2.4cqw;
     margin-left: -1.2cqw;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 30%, #ff9a8a, #c0392b 55%, #7a1d14);
+    border-radius: 50%;   /* keeps the shadow round */
+    background: url(../image/stand/magnet-shiny.svg) center / 100% 100% no-repeat;
     box-shadow: 0 0.3cqw 0.5cqw rgba(0, 0, 0, 0.5);
 }
 
@@ -283,8 +283,8 @@ body.home {
     top: 62%;
     --tilt: 7deg;
     padding: 1.2cqw 1.8cqw;
-    background: var(--paper);
-    border: 2px solid #000;
+    border: 2px solid transparent;
+    background: url(../image/stand/paper-note.svg) center / 100% 100% no-repeat border-box;
     color: #000;
     font-family: var(--sheet-font);
     font-weight: 700;
@@ -413,8 +413,7 @@ main.front::before {
     position: absolute;
     inset: 0 0 22px;   /* ends where the lip begins */
     z-index: -1;
-    background: var(--stand);
-    clip-path: polygon(0 0, 100% 8px, 100% 100%, 0 100%);
+    background: url(../image/stand/stand-front.svg) center / 100% 100% no-repeat;
 }
 
 /* The lip at the bottom: a bent edge of sheet metal. It starts where the
@@ -430,8 +429,7 @@ main.front::after {
     bottom: -22px;
     z-index: 3;
     height: 44px;
-    background: linear-gradient(to bottom, #484649 0 38px, #0d0f10 38px);
-    clip-path: polygon(22px 0, calc(100% - 22px) 0, 100% 100%, 0 100%);
+    background: url(../image/stand/stand-lip.svg) center / 100% 100% no-repeat;
     pointer-events: none;
 }
 
@@ -441,7 +439,7 @@ main.front::after {
     width: 16px;
     height: 140px;
     margin: 0 auto;
-    background: #908f90;
+    background: url(../image/stand/pole.svg) center / 100% 100% no-repeat;
 }
 
 /* Two slots side by side, every sheet the same size (letter paper).
@@ -540,8 +538,8 @@ main.front::after {
     bottom: -64px;   /* hanging just below the stand and its lip */
     z-index: 4;
     padding: 5px 16px;
-    background: var(--paper);
-    border: 2px solid #000;
+    border: 2px solid transparent;
+    background: url(../image/stand/paper-note.svg) center / 100% 100% no-repeat border-box;
     font-family: var(--sheet-font);
     font-weight: 700;
     font-size: 15px;
@@ -648,8 +646,8 @@ main.front::after {
     position: relative;
     margin: 0;
     padding: 8px 8px 10px;
-    background: #fff;
-    border: 2px solid #000;
+    border: 2px solid transparent;
+    background: url(../image/stand/photo-frame.svg) center / 100% 100% no-repeat border-box;
     transform: rotate(var(--tilt, 2deg));
 }
 
@@ -674,20 +672,18 @@ main.front::after {
     position: absolute;
     top: -11px;
     left: 50%;
-    width: 22px;
-    height: 22px;
-    margin-left: -11px;
-    border-radius: 50%;
-    background: #c0392b;
-    border: 2px solid #000;
+    width: 26px;
+    height: 26px;
+    margin-left: -13px;
+    background: url(../image/stand/magnet.svg) center / 100% 100% no-repeat;
 }
 
 /* sticky notes (the quotes on Our Story) */
 .post-it {
     margin: 0;
     padding: 30px 24px 26px;
-    background: #fff176;
-    border: 2px solid #000;
+    border: 2px solid transparent;
+    background: url(../image/stand/post-it.svg) center / 100% 100% no-repeat border-box;
     transform: rotate(var(--tilt, -2deg));
     font-family: 'Caveat', 'Comic Sans MS', cursive;
     font-size: 27px;
@@ -742,7 +738,7 @@ main.front::after {
     top: -8px;
     width: 76px;
     height: 24px;
-    background: rgba(255, 255, 235, 0.75);
+    background: url(../image/stand/tape.svg) center / 100% 100% no-repeat;
 }
 
 .snapshot.taped::before { left: -22px;  transform: rotate(-35deg); }
@@ -777,8 +773,8 @@ footer {
 .donate-button {
     display: inline-block;
     padding: 8px 20px;
-    background: var(--paper);
-    border: 2px solid #000;
+    border: 2px solid transparent;
+    background: url(../image/stand/paper-note.svg) center / 100% 100% no-repeat border-box;
     color: #000;
     font-family: var(--sheet-font);
     font-weight: 700;
@@ -896,7 +892,7 @@ footer img {
         align-self: flex-start;
         margin-top: 16px;
         padding: 6px 18px;
-        border: 2px solid #000;
+        border: 2px solid transparent;
     }
 
     /* stand runs off the left edge of the screen (cancels body padding) */
@@ -934,7 +930,7 @@ footer img {
         width: 2cqw;
         top: 133cqw;
         bottom: 0;
-        background: #908f90;
+        background: url(../image/stand/pole.svg) center / 100% 100% no-repeat;
     }
 
     .stand::after {    /* base */
@@ -942,7 +938,7 @@ footer img {
         width: 3.6cqw;
         bottom: 0;
         height: 15cqw;
-        background: #0d0f10;
+        background: url(../image/stand/pole-base.svg) center / 100% 100% no-repeat;
     }
 
     /* Title: every word the same letter height (8.6cqw), staggered like the sketch */
@@ -1022,7 +1018,6 @@ footer img {
     main.front::after {   /* stand is edge to edge, so no overhang */
         left: 0;
         right: 0;
-        clip-path: none;
     }
 
     .front-pole {
@@ -1178,7 +1173,7 @@ footer img {
         margin-left: -8cqw;
         border: 0;
         border-radius: 0;
-        background: rgba(255, 255, 235, 0.8);
+        background: url(../image/stand/tape.svg) center / 100% 100% no-repeat;
         box-shadow: none;
         transform: rotate(-4deg);
     }

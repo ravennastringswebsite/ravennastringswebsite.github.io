@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <!-- shaded red magnet (home page) -->
+  <defs>
+    <radialGradient id="shine" cx="0.35" cy="0.3" r="0.75">
+      <stop offset="0" stop-color="#ff9a8a"/>
+      <stop offset="0.55" stop-color="#c0392b"/>
+      <stop offset="1" stop-color="#7a1d14"/>
+    </radialGradient>
+  </defs>
+  <circle cx="12" cy="12" r="12" fill="url(#shine)"/>
+</svg>
