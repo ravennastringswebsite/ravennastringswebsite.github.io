@@ -1,82 +1,96 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <title>Conductors</title>
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Conductors | The Ravenna String Orchestras</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="scripts/site.js" defer></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <meta name="description" content="Ravenna Strings is a community orchestra based in Seattle. Our musicians perform classical and contemporary music quarterly.">
+    <meta name="keywords" content="Ravenna Strings Orchestra, Ravenna Strings, Seattle, Orchestra, Classical Music, Contemporary Music, Community Orchestra">
+    <meta property="og:title" content="Conductors | The Ravenna String Orchestras">
+    <meta property="og:description" content="Ravenna Strings is a community orchestra based in Seattle. Our musicians perform classical and contemporary music quarterly.">
+    <meta property="og:image" content="https://ravennastrings.org/image/joeandnathan.jpg">
 </head>
+<body class="mobile-sheets">
 
-<body>
-<!--CHANGES BELOW NEED TO BE REPLACED IN ALL PAGES-->
-<header>
-  <div id="header-container">
-    <div id="header-img"><a class="image-link" href="index.html"><img src="image/banner.gif" alt=""></a></div>
-    <div id="header-links">
-      <div class="header-links-row">
-        <a href="The_RSO.html" class="header-link">The Ravenna Strings</a>
-        <a href="conductors.html" class="header-link">Conductors</a>
-        <a href="The_R2SO.html" class="header-link">The Ravenna String Sinfonia</a>
-      </div>
-      <div class="header-links-row">
-        <a href="register.html" class="header-link">Register</a>
-        <a href="concert.html" class="header-link">Concerts & Schedules</a>
-        <a href="About_Us.html" class="header-link">Our Story</a>
-        <a href="donate.html" class="header-link">Donate</a>
-      </div>
-    </div>
-  </div>
+<!--HEADER: SAME ON EVERY PAGE. COPY CHANGES TO ALL PAGES
+    (except aria-current="page", which marks the page you're on)-->
+<header class="site-bar">
+    <a class="site-logo" href="index.html"><img src="image/stand/rs_logo_small.jpg" alt="Ravenna Strings home" width="160" height="225"></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-links">
+        <span class="menu-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="site-links" id="site-links" aria-label="Main">
+        <div class="nav-group">
+            <a href="orchestras.html">Our Orchestras</a>
+            <div class="nav-sub">
+                <a href="conductors.html" aria-current="page">Conductors</a>
+            </div>
+        </div>
+        <a href="concert.html">Concerts &amp; Schedules</a>
+        <a href="register.html">Register</a>
+        <div class="nav-group">
+            <a href="about_us.html">Our Story</a>
+            <div class="nav-sub">
+                <a href="about_us.html#archives">Archives</a>
+            </div>
+        </div>
+        <a class="site-donate" href="donate.html">Donate</a>
+    </nav>
 </header>
-<!--CHANGES ABOVE NEED TO BE REPLACE IN ALL PAGES-->
 
-<div class="text-container">
-  <h2>Conductors</h2>
-</div>
-<br>
-<div id="conductor-img-container">
-  <img id="conductor-img" src="image/joeandnathan.jpg">
-</div>
-<br><br><br>
-<div class="text-container">
-  <p class="left-align">
-    <b>Joseph Pollard White, Director</b>
-    <br>
-    Originally from New York, Joseph Pollard White (above, left) earned his Doctorate in Orchestral Conducting at the University of Washington, after studies at the Eastman School of Music and Indiana University. He has taught at Pacific Lutheran University, Northern Kentucky University and Christopher Newport University. He is active as a violist, composer and conductor.<br><br><br>
-    <b>Nathan Harrison, Associate Director</b>
-    <br>
-    Originally from Anchorage, Alaska, Nathan Harrison (above, right) studied at the University of Puget Sound, majoring in 'cello, and holds a Master's degree in Music Education from City University. He is the Director of Orchestras and Chamber Music at Kentwood High School in Kent, Washington.
+<!--END HEADER-->
 
-    <br>
-    <br>
-    <div align="right">
-      <small><a href="index.html">Back to home</font></a></small>
-      <br>
+<main class="front">
+    <h1 class="mobile-title">Our Conductors</h1>
+    <!-- Joseph and Nathan together, taped across the middle of both sheets.
+         The .photo-gap spans in each sheet keep the text clear of it. -->
+    <figure class="snapshot conductors-together">
+        <img src="image/joeandnathan.jpg" alt="Joseph Pollard White (left) and Nathan Harrison (right)">
+    </figure>
+    <div class="sheets">
+        <article class="page-sheet conductor" id="joseph">
+            <h1 class="clef-alto">Joseph Pollard White</h1>
+            <p class="role">Director &middot; conducts <a href="orchestras.html#ravenna-strings">The Ravenna Strings</a></p>
+            <span class="photo-gap photo-gap-right" aria-hidden="true"></span>
+            <p>
+                                Originally from New York, Joseph earned his Doctorate in Orchestral Conducting at the University of Washington after studies at Eastman and Indiana University, has taught at Pacific Lutheran, Northern Kentucky and Christopher Newport universities, and is active as a violist, composer and conductor.
+                            </p>
+            <figure class="snapshot taped conductor-action">
+                <img src="image/2024-2025/Ravenna Strings Concert-23.jpg" alt="Joseph Pollard White conducting">
+            </figure>
+        </article>
+
+        <article class="page-sheet conductor" id="nathan">
+            <h1 class="clef-bass">Nathan Harrison</h1>
+            <p class="role">Associate Director &middot; conducts <a href="orchestras.html#sinfonia">The Ravenna Strings Sinfonia</a></p>
+            <span class="photo-gap photo-gap-left" aria-hidden="true"></span>
+            <p>
+                                Originally from Anchorage, Alaska, Nathan studied 'cello at the University of Puget Sound, holds a Master's in Music Education from City University, and directs Orchestras and Chamber Music at Kentwood High School.
+                            </p>
+            <figure class="snapshot taped conductor-action">
+                <img src="image/2024-2025/Ravenna Strings Concert-14.jpg" alt="Nathan Harrison conducting">
+            </figure>
+        </article>
     </div>
-  </p>
-</div>
-  <br>
-  <table align="center" border="0" cellpadding="0" cellspacing="0" width="640">
-    <tbody>
-      <tr>
-        <td align="center" valign="top"><img alt="" height="150" src="image/pattern.jpg" width="638">
-          <br>
+</main>
+<div class="front-pole" aria-hidden="true"></div>
 
-          <div align="right">
-            <small>
-              <small>
-                <font color="#666666">Graphic with
-                  permission of Jong Kim</font>
-              </small>
-            </small>
-            <br>
-          </div>
-        </td>
-      </tr>
+<!--FOOTER: SAME ON EVERY PAGE. COPY CHANGES TO ALL PAGES-->
+<footer>
+    <a class="donate-button" href="donate.html">Donate</a>
+    <a href="mailto:ravennastrings@gmail.com">ravennastrings@gmail.com</a>
+    <a href="https://www.facebook.com/groups/183579296312/"><img src="image/facebook_logo.png" alt="Our Facebook group"></a>
+</footer>
+<!--END FOOTER-->
 
-    </tbody>
-  </table>
-  <br>
 </body>
-
 </html>

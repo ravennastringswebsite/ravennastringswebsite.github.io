@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+  <!-- a sheet of paper with slightly bowed edges; stretches to fit any page -->
+  <path d="M1,1.2 C30,0.4 70,0.2 99,1 C99.6,30 98.8,70 99.4,99 C70,99.6 30,98.8 1.4,99.2 C0.6,70 1.6,30 1,1.2 Z"
+        fill="#ffdeb3" stroke="#000" stroke-width="2" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
+</svg>

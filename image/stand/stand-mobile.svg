@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 134">
+  <!-- desk -->
+  <path d="M0,4 L65,6 L66,130 L0,128 Z" fill="#31312f"/>
+  <!-- ledge lip -->
+  <path d="M0,128 L66,130 L67.5,133 L0,131 Z" fill="#484649"/>
+  <!-- flourish -->
+  <path transform="translate(1,14)" d="M24,78 C18,70 26,62 33,68 C40,75 48,80 55,72 C60,66 56,59 51,62 C47,65 51,70 55,68"
+        fill="none" stroke="#fff" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- top of the rod (the rest of the pole is drawn in CSS so it can run to the bottom of the screen) -->
+  <rect x="13.2" y="122" width="2" height="12" fill="#908f90"/>
+  <!-- hinge -->
+  <path d="M14.2,98 L8.5,125 L20,130 Z" fill="#484649"/>
+  <circle cx="14.2" cy="122" r="1.7" fill="#908f90"/>
+</svg>

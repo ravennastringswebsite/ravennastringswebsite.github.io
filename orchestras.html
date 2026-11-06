@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Our Orchestras | The Ravenna String Orchestras</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="scripts/site.js" defer></script>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+    <meta name="description" content="Ravenna Strings is a community orchestra based in Seattle. Our musicians perform classical and contemporary music quarterly.">
+    <meta name="keywords" content="Ravenna Strings Orchestra, Ravenna Strings, Seattle, Orchestra, Classical Music, Contemporary Music, Community Orchestra">
+    <meta property="og:title" content="Our Orchestras | The Ravenna String Orchestras">
+    <meta property="og:description" content="Ravenna Strings is a community orchestra based in Seattle. Our musicians perform classical and contemporary music quarterly.">
+    <meta property="og:image" content="https://ravennastrings.org/image/joeandnathan.jpg">
+</head>
+<body class="mobile-sheets">
+
+<!--HEADER: SAME ON EVERY PAGE. COPY CHANGES TO ALL PAGES
+    (except aria-current="page", which marks the page you're on)-->
+<header class="site-bar">
+    <a class="site-logo" href="index.html"><img src="image/stand/rs_logo_small.jpg" alt="Ravenna Strings home" width="160" height="225"></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-links">
+        <span class="menu-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Menu</span>
+    </button>
+    <nav class="site-links" id="site-links" aria-label="Main">
+        <div class="nav-group">
+            <a href="orchestras.html" aria-current="page">Our Orchestras</a>
+            <div class="nav-sub">
+                <a href="conductors.html">Conductors</a>
+            </div>
+        </div>
+        <a href="concert.html">Concerts &amp; Schedules</a>
+        <a href="register.html">Register</a>
+        <div class="nav-group">
+            <a href="about_us.html">Our Story</a>
+            <div class="nav-sub">
+                <a href="about_us.html#archives">Archives</a>
+            </div>
+        </div>
+        <a class="site-donate" href="donate.html">Donate</a>
+    </nav>
+</header>
+
+<!--END HEADER-->
+
+<main class="front">
+    <!-- The summary note sits centred at the top with a photo magneted on
+         each side; the two orchestra notes sit below, each as wide as a
+         sheet on the other pages. -->
+    <div class="board">
+        <figure class="snapshot magnet board-photo-left">
+            <img src="image/2024-2025/Ravenna Strings Concert-05.jpg" alt="Both orchestras on stage together">
+        </figure>
+        <article class="page-sheet board-note board-summary" id="joining">
+            <h1 class="clef-treble">Our Orchestras</h1>
+            <p>
+                We give string players of all levels (age 13 and up) a welcoming, low-pressure place to make music with wonderful people and explore great repertoire. We're perfect for musicians wanting to keep up their skills or get back into playing after taking some time off. 
+            </p>
+            <p>
+                <strong>There are no auditions.</strong> Choose whichever group suits you. Some folks go back and forth between groups (and some even do both!)
+            </p>
+            <p>
+                Both orchestras rehearse weekly at the <a href="https://www.phinneycenter.org/about/locations">Phinney Neighborhood Center</a>. We have terms three terms each year, each ending in a free joint concert at <a href="https://saintandrewsseattle.org">St. Andrew's Church</a>, 111 NE 80th St. See <a href="concert.html">Concerts &amp; Schedules</a> for more info. <a href="register.html">Register!</a>
+            </p>
+        </article>
+        <figure class="snapshot magnet board-photo-right">
+            <img src="image/2024-2025/Ravenna Strings Concert-31.jpg" alt="The orchestra at St. Andrew's">
+        </figure>
+
+        <article class="page-sheet board-note board-left" id="sinfonia">
+            <h2 class="clef-alto">The Ravenna Strings Sinfonia</h2>
+            <p class="group-when"><strong>Mondays, 7&ndash;8:15pm</strong> &middot; conducted by <a href="conductors.html#nathan">Nathan Harrison</a></p>
+            <p>
+                Beginner to intermediate level, focussing a little more on technique and ensemble playing. Repertoire is chosen from arrangements of medium difficulty or pieces written for intermediate players. We have fun while preparing for the short concert at the end of each term.
+            </p>
+        </article>
+
+        <article class="page-sheet board-note board-right" id="ravenna-strings">
+            <h2 class="clef-bass">The Ravenna Strings</h2>
+            <p class="group-when"><strong>Thursdays, 7&ndash;8:15pm</strong> &middot; conducted by <a href="conductors.html#joseph">Joseph Pollard White</a></p>
+            <p>
+                Intermediate to advanced level, focussing a little more on repertoire. Rehearsals are informal and low pressure, but we're serious about preparing for the short concert at the end of each term.
+            </p>
+        </article>
+
+        <p class="pinned-note">Bring a stand!</p>
+    </div>
+</main>
+<div class="front-pole" aria-hidden="true"></div>
+
+<!--FOOTER: SAME ON EVERY PAGE. COPY CHANGES TO ALL PAGES-->
+<footer>
+    <a class="donate-button" href="donate.html">Donate</a>
+    <a href="mailto:ravennastrings@gmail.com">ravennastrings@gmail.com</a>
+    <a href="https://www.facebook.com/groups/183579296312/"><img src="image/facebook_logo.png" alt="Our Facebook group"></a>
+</footer>
+<!--END FOOTER-->
+
+</body>
+</html>

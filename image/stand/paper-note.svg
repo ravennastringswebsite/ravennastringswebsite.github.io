@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+  <!-- paper note (Donate buttons, page-turn tabs); stretches to fit, with a 2px black outline -->
+  <rect width="100" height="100" fill="#ffdeb3" stroke="#000" stroke-width="4" vector-effect="non-scaling-stroke"/>
+</svg>
