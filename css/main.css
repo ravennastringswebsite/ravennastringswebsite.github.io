@@ -311,7 +311,7 @@ body.home {
     height: 2.4cqw;
     margin-left: -1.2cqw;
     border-radius: 50%;   /* keeps the shadow round */
-    background: url(../image/stand/magnet-shiny.svg) center / 100% 100% no-repeat;
+    background: url(../image/stand/magnet.svg) center / 100% 100% no-repeat;
     box-shadow: 0 0.3cqw 0.5cqw rgba(0, 0, 0, 0.5);
 }
 
@@ -925,6 +925,19 @@ main.front > .conductors-together {
     margin: 0;
 }
 
+/* the next concert's flyer: sized to fit the sheet without scrolling */
+.page-sheet .snapshot.next-flyer {
+    width: fit-content;
+    max-width: 100%;
+    margin: 28px auto 22px;
+}
+
+.next-flyer img {
+    width: auto;
+    max-width: 100%;
+    max-height: calc((100cqw - 40px) / 2 * 11 / 8.5 - 270px);
+}
+
 /* a plain white postcard announcing the next concert (until there's a
    poster) */
 .postcard {
@@ -1504,6 +1517,11 @@ footer img {
         font-size: 32px;
     }
 
+    /* the next concert's flyer: full sheet width, no height cap */
+    .next-flyer img {
+        max-height: none;
+    }
+
     /* schedule: tighter spacing so both orchestras' dates fit side by side */
     .page-sheet:has(.term) {
         padding-left: 16px;
@@ -1745,10 +1763,10 @@ footer img {
     }
 }
 
-/* ---------- Concert popup (currently unused) ---------- */
+/* ---------- Concert pop-up on the home page (scripts/site.js) ---------- */
 
 .concert-popup {
-    display: none;
+    display: block;
     position: fixed;
     z-index: 9999;
     left: 0;
@@ -1771,10 +1789,9 @@ footer img {
     transform: translate(-50%, -50%) scale(0.7);
     padding: 20px;
     border-radius: 10px;
-    width: auto;
+    width: max-content;
     height: auto;
     max-width: min(640px, 92vw);
-    max-height: 90vh;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     opacity: 0;
@@ -1797,10 +1814,12 @@ footer img {
 }
 
 .concert-popup img {
-    width: 100%;
+    display: block;
+    width: auto;
+    max-width: 100%;
     height: auto;
-    max-height: 85vh;
-    object-fit: contain;
+    max-height: calc(90vh - 130px);   /* room for the heading and padding */
+    margin: 0 auto;
     border-radius: 5px;
 }
 
@@ -1812,6 +1831,22 @@ footer img {
     right: 15px;
     top: 10px;
     cursor: pointer;
+}
+
+.concert-popup[hidden] {
+    display: none;
+}
+
+.concert-popup h3 {
+    margin: 0 30px 14px 0;
+    color: var(--accent);
+    font-size: 18px;
+}
+
+.close-popup {
+    background: none;
+    border: 0;
+    line-height: 1;
 }
 
 .close-popup:hover,

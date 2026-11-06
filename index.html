@@ -74,63 +74,22 @@
 </div>
 <!--END HEADER-->
 
-<!-- Concert Popup, HIDDEN UNTIL NEXT CONCERT!! To show it, remove the comment
-     markers around this div AND around the popup script at the bottom of the page. -->
-<!--
-<div id="concertPopup" class="concert-popup">
+<!-- CONCERT POP-UP: shows the next concert's flyer when someone opens the
+     home page (once per visit). It switches itself off on the data-hide-from
+     date, so no need to remove it after the concert. For the next concert,
+     change the image, the heading and the date. -->
+<div id="concertPopup" class="concert-popup" data-hide-from="2026-11-20" hidden
+     role="dialog" aria-modal="true" aria-labelledby="concertPopupTitle">
     <div class="concert-popup-content">
-        <span class="close-popup">&times;</span>
-        <h3 style="color: #a24416; margin-top: 0; margin-bottom: 15px; font-size: 18px;">Concert on June 3rd, 7:30 at St. Andrew's Episcopal Church</h3>
-        <img src="image/ravennaflyer.jpeg" alt="Ravenna Strings Concert - June 3rd, 2026">
+        <button type="button" class="close-popup" aria-label="Close">&times;</button>
+        <h3 id="concertPopupTitle">Free concert &middot; Wednesday, November 18, 7:30pm &middot; St. Andrew's Episcopal Church</h3>
+        <a href="concert.html"><img src="image/ravennaflyer.jpeg" alt="Flyer: Ravenna Strings &amp; Sinfonia free concert, Wednesday November 18, 7:30pm, St. Andrew's Episcopal Church, 111 NE 80th St"></a>
     </div>
 </div>
--->
 
 <main>
     <h1 class="visually-hidden">The Ravenna String Orchestras</h1>
 </main>
 
-
-<!-- Concert Popup JavaScript - HIDDEN UNTIL NEXT CONCERT -->
-<!--
-<script>
-// Show popup when page loads with animation
-window.onload = function() {
-    var popup = document.getElementById('concertPopup');
-    popup.style.display = 'block';
-
-    // Small delay to ensure display is set before animation
-    setTimeout(function() {
-        popup.classList.add('show');
-    }, 50);
-};
-
-// Close popup with animation when X is clicked
-document.querySelector('.close-popup').onclick = function() {
-    closePopup();
-};
-
-// Close popup with animation when clicking outside the content
-window.onclick = function(event) {
-    var popup = document.getElementById('concertPopup');
-    if (event.target == popup) {
-        closePopup();
-    }
-};
-
-// Function to close popup with animation
-function closePopup() {
-    var popup = document.getElementById('concertPopup');
-    popup.classList.remove('show');
-    popup.classList.add('closing');
-
-    // Hide popup after animation completes
-    setTimeout(function() {
-        popup.style.display = 'none';
-        popup.classList.remove('closing');
-    }, 300);
-}
-</script>
--->
 </body>
 </html>

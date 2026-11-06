@@ -181,3 +181,37 @@ if (zoomable.length) {
         if (event.key === 'Escape' && !viewer.hidden) closeViewer();
     });
 }
+
+// Home page concert pop-up: shows the flyer once per visit, up to (not
+// including) the date in data-hide-from on #concertPopup in index.html.
+var concertPopup = document.getElementById('concertPopup');
+
+if (concertPopup) {
+    var hideFrom = new Date(concertPopup.dataset.hideFrom + 'T00:00:00');
+    var seen = false;
+    try { seen = sessionStorage.getItem('concertPopupSeen') === '1'; } catch (e) {}
+
+    if (new Date() < hideFrom && !seen) {
+        concertPopup.hidden = false;
+        setTimeout(function () { concertPopup.classList.add('show'); }, 50);
+        try { sessionStorage.setItem('concertPopupSeen', '1'); } catch (e) {}
+        concertPopup.querySelector('.close-popup').focus();
+
+        var closePopup = function () {
+            concertPopup.classList.remove('show');
+            concertPopup.classList.add('closing');
+            setTimeout(function () {
+                concertPopup.hidden = true;
+                concertPopup.classList.remove('closing');
+            }, 300);
+        };
+
+        concertPopup.querySelector('.close-popup').addEventListener('click', closePopup);
+        concertPopup.addEventListener('click', function (event) {
+            if (event.target === concertPopup) closePopup();
+        });
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape' && !concertPopup.hidden) closePopup();
+        });
+    }
+}
