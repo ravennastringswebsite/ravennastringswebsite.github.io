@@ -12,6 +12,7 @@
     box-sizing: border-box;
 }
 
+html,
 body {
     overflow-x: clip;   /* the leaning stand is a touch wider at the bottom */
     margin: 0;
@@ -85,10 +86,47 @@ h1, h2, h3 {
 
 .site-links a:hover,
 .site-links a:focus-visible,
+.site-links a.is-linked,
 .site-links a[aria-current="page"] {
     color: var(--accent);
     text-decoration: underline;
     text-underline-offset: 4px;
+}
+
+/* "Our Story" with its "Archives" dropdown */
+.nav-group {
+    position: relative;
+}
+
+.nav-sub {
+    position: absolute;
+    top: 100%;
+    left: -14px;
+    z-index: 20;
+    padding: 10px 14px;
+    white-space: nowrap;
+    background: url(../image/stand/paper-note.svg) center / 100% 100% no-repeat;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-4px) rotate(-1.5deg);
+    transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+}
+
+/* invisible bridge so the menu stays open while the mouse moves down */
+.nav-sub::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: 12px;
+}
+
+.nav-group:hover .nav-sub,
+.nav-group:focus-within .nav-sub {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(6px) rotate(-1.5deg);
 }
 
 /* Donate as a little paper note, like the one on the stand */
@@ -104,7 +142,8 @@ h1, h2, h3 {
 }
 
 .site-links .site-donate:hover,
-.site-links .site-donate:focus-visible {
+.site-links .site-donate:focus-visible,
+.site-links .site-donate.is-linked {
     color: #000;
     text-decoration: none;
     transform: rotate(-3deg) translateY(-2px);
@@ -185,7 +224,8 @@ body.home {
 }
 
 .sheet:hover,
-.sheet:focus-visible {
+.sheet:focus-visible,
+.sheet.is-linked {
     transform: translateY(-2.5cqw);
 }
 
@@ -295,7 +335,8 @@ body.home {
 }
 
 .note:hover,
-.note:focus-visible {
+.note:focus-visible,
+.note.is-linked {
     transform: rotate(var(--tilt)) scale(1.08);
 }
 
@@ -397,14 +438,15 @@ blockquote cite {
 
 main.front {
     position: relative;
+    container-type: inline-size;   /* lets .board match the sheets' height */
     max-width: min(1400px, 100% - 16px);   /* room for the lip's overhang */
     margin: 28px auto 0;
     padding: 44px 36px 12px;   /* sheets run down just behind the lip */
-    /* leaning back like a real stand: pivots on the top edge, so the bottom
-       comes slightly toward you (and a little wider) */
+    /* The stand looks like it leans back because image/stand/stand-front.svg
+       is drawn narrower at the top. (No 3D transforms here: they make the
+       browser render the page as an image, which blurs the text on many
+       screens.) */
     z-index: 1;
-    transform: perspective(4000px) rotateX(6deg);
-    transform-origin: 50% 0;
 }
 
 /* the dark panel of the stand */
@@ -467,7 +509,8 @@ main.front::after {
     display: none;
 }
 
-.sheets > :nth-child(odd) {
+.sheets > :nth-child(odd),
+.archive > .page-sheet:nth-of-type(odd) {
     scroll-snap-align: start;
 }
 
@@ -486,19 +529,21 @@ main.front::after {
     background: url(../image/stand/page-1.svg) center / 100% 100% no-repeat;
     font-size: 15.5px;
     line-height: 1.47;
-    /* the sheets lean against the stand with their bottoms resting out on
-       the lip: they sit a little lower and further forward than the stand,
-       and tip toward you a little more than it does */
-    transform: perspective(1600px) translateY(-24px) translateZ(14px) rotateX(3.5deg) rotate(var(--tilt, 0deg));
+    /* the sheets rest on the lip, in front of it. Flat 2D only - see the
+       note on main.front about 3D transforms and blurry text. */
+    transform: translateY(8px) rotate(var(--tilt, 0deg));
     transform-origin: 50% 0;
 }
 
-.sheets > .page-sheet:nth-child(even) {
+.sheets > .page-sheet:nth-child(even),
+.archive > .page-sheet:nth-of-type(even) {
     background-image: url(../image/stand/page-2.svg);
 }
 
-.sheets > :nth-child(odd)  { --tilt: -0.5deg; }
-.sheets > :nth-child(even) { --tilt: 0.6deg; }
+.sheets > :nth-child(odd),
+.archive > .page-sheet:nth-of-type(odd)  { --tilt: -0.5deg; }
+.sheets > :nth-child(even),
+.archive > .page-sheet:nth-of-type(even) { --tilt: 0.6deg; }
 
 /* photos and notes stuck straight onto the stand, in place of a sheet */
 .desk-column {
@@ -532,6 +577,12 @@ main.front::after {
 .page-sheet h2 { --clef: url(../image/stand/clef-bass.svg); --clef-size: 24px; }
 .page-sheet section h2 { --clef: url(../image/stand/clef-alto.svg); --clef-size: 24px; }
 
+/* each heading picks its clef, so treble, alto and bass get roughly equal
+   use across the site (class="clef-treble", "clef-alto" or "clef-bass") */
+.page-sheet .clef-treble { --clef: url(../image/stand/clef-treble.svg); --clef-size: 44px; }
+.page-sheet .clef-alto   { --clef: url(../image/stand/clef-alto.svg);   --clef-size: 30px; }
+.page-sheet .clef-bass   { --clef: url(../image/stand/clef-bass.svg);   --clef-size: 24px; }
+
 /* turn-page tabs (added by scripts/site.js when a page has more sheets) */
 .page-turn {
     position: absolute;
@@ -553,6 +604,300 @@ main.front::after {
 
 .page-turn-next:hover { transform: rotate(2deg) translateX(3px); }
 .page-turn-back:hover { transform: rotate(-2deg) translateX(-3px); }
+
+/* About Us: more room above the orchestra photo so its tape clears the
+   text (desktop) */
+@media (min-width: 641px) {
+    #our-story .snapshot.float-right {
+        width: 42%;
+    }
+
+    #our-story .snapshot:last-child {
+        margin: 32px 6px 0;
+    }
+}
+
+/* About Us: the two concert photos are set into the text, one on each
+   side, so the text wraps around them */
+#about-us .about-photo-1 {
+    float: left;
+    width: 52%;
+    margin: 18px 24px 12px 4px;
+    --tilt: -3deg;
+}
+
+#about-us .about-photo-2 {
+    clear: both;
+    float: right;
+    width: 58%;
+    margin: 22px 4px 0 0;
+    --tilt: 2.5deg;
+}
+
+/* the archive wrapper: no effect on desktop, a swipeable row on phones */
+.archive {
+    display: contents;
+}
+
+.archive-hint {
+    display: none;
+}
+
+/* Our Story archive: posters and programs taped to the sheets */
+.archive-sheet {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+}
+
+.archive-sheet h2 {
+    align-self: stretch;
+}
+
+.archive-sheet .poster {
+    margin: 10px 0 0;
+    max-width: 92%;
+}
+
+.archive-sheet .poster img {
+    width: auto;
+    max-width: 100%;
+    max-height: 520px;
+}
+
+.archive-sheet .poster:nth-of-type(odd)  { --tilt: -2deg; }
+.archive-sheet .poster:nth-of-type(even) { --tilt: 2deg; }
+
+/* two items on one sheet: share the height */
+.archive-sheet .poster:nth-last-of-type(2) img,
+.archive-sheet .poster:nth-last-of-type(2) ~ .poster img {
+    max-height: 265px;
+}
+
+/* archive images can be tapped to enlarge (scripts/site.js) */
+.archive-sheet .poster img {
+    cursor: zoom-in;
+}
+
+.archive-sheet .poster img:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(20, 20, 20, 0.88);
+    cursor: zoom-out;
+}
+
+.lightbox figure {
+    margin: 0;
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lightbox img {
+    max-width: 100%;
+    max-height: calc(100vh - 90px);
+    max-height: calc(100svh - 90px);
+    border: 8px solid #fff;
+    object-fit: contain;
+}
+
+.lightbox figcaption {
+    margin-top: 10px;
+    color: #fff;
+    font-family: var(--sheet-font);
+    font-size: 17px;
+    text-align: center;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    padding: 0 8px;
+    background: none;
+    border: 0;
+    color: #fff;
+    font-size: 40px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.lightbox[hidden] {
+    display: none;
+}
+
+/* heading shown above the sheets on phones only (e.g. "Our Conductors") */
+.mobile-title {
+    display: none;
+}
+
+body.lightbox-open {
+    overflow: hidden;
+}
+
+/* Our Orchestras: the summary note centred at the top with a photo on
+   each side, and the two orchestra notes below, each as wide as a sheet on
+   the other pages. The board is exactly as tall as two sheets, so the
+   stand is the same size as on every other page. */
+.board {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: auto auto;
+    align-content: center;
+    padding-bottom: 34px;   /* room under the cards for the pinned note */
+    grid-template-areas:
+        "photo-l summary summary photo-r"
+        "left    left    right   right";
+    gap: 30px 40px;   /* 40px across = the gap between sheets */
+    /* grows taller only if the text needs it (narrow windows) */
+    min-height: calc((100cqw - 40px) / 2 * 11 / 8.5);
+    position: relative;
+}
+
+/* small pinned note, centred over the bottom corners of the two cards */
+.pinned-note {
+    grid-row: 2;
+    grid-column: 2 / 4;
+    align-self: end;
+    justify-self: center;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    padding: 14px 26px 12px;
+    border: 2px solid transparent;
+    background: url(../image/stand/paper-note.svg) center / 100% 100% no-repeat border-box;
+    font-family: var(--sheet-font);
+    font-weight: 700;
+    font-size: 19px;
+    white-space: nowrap;
+    transform: translateY(55%) rotate(-3deg);
+}
+
+.pinned-note::before {
+    content: '';
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    width: 22px;
+    height: 22px;
+    margin-left: -11px;
+    background: url(../image/stand/magnet.svg) center / 100% 100% no-repeat;
+}
+
+.board-summary     { grid-area: summary; --tilt: -0.6deg; }
+.board-left        { grid-area: left;    --tilt: -0.8deg; }
+.board-right       { grid-area: right;   --tilt: 0.7deg; }
+.board-photo-left  { grid-area: photo-l; align-self: center; --tilt: -3deg; }
+.board-photo-right { grid-area: photo-r; align-self: center; --tilt: 2.5deg; }
+
+/* the side photos are much bigger than their column: they hang a little
+   off the outer edges of the stand and tuck behind the summary card
+   (desktop) */
+@media (min-width: 641px) {
+    .board .board-photo-left,
+    .board .board-photo-right {
+        width: 155%;
+        z-index: 0;
+    }
+
+    /* not a matched pair: same height, but different sizes, tilts and magnets */
+    .board .board-photo-left {
+        width: 162%;
+        justify-self: start;
+        align-self: center;
+        margin: 0 0 0 -34px;
+        --tilt: -4.5deg;
+    }
+
+    .board .board-photo-right {
+        width: 138%;
+        justify-self: end;
+        align-self: center;
+        margin: 0 -22px 0 0;
+        --tilt: 1.5deg;
+    }
+
+    .board .board-photo-left::before  { left: 34%; }
+    .board .board-photo-right::before { left: 63%; }
+
+    .board-summary {
+        position: relative;
+        z-index: 1;
+    }
+}
+
+.page-sheet.board-note {
+    aspect-ratio: auto;
+    padding: 24px 30px 30px;
+    font-size: 16px;
+}
+
+/* the two orchestra cards are the same height */
+.board-left,
+.board-right {
+    align-self: stretch;
+}
+
+.board-note h1,
+.board-note h2 {
+    text-align: center;
+    font-size: 24px;
+}
+
+/* Conductors: one conductor per sheet, with the photo of the two of them
+   taped across the middle of the stand, overlapping both sheets */
+.conductor .role {
+    margin-top: -4px;
+    text-align: center;
+    font-style: italic;
+}
+
+main.front > .conductors-together {
+    position: absolute;
+    bottom: 0;   /* standing upright on the lip, just below the sheets */
+    left: 50%;
+    z-index: 5;
+    width: 36cqw;
+    --tilt: 0deg;
+    transform: translateX(-50%);
+}
+
+/* Nathan's conducting photo tips the other way from Joseph's */
+#nathan .conductor-action {
+    --tilt: 1.2deg;
+}
+
+/* empty space in each sheet's inner corner, where the photo sits */
+.photo-gap {
+    display: block;
+    width: calc(18.5cqw - 42px);
+    height: 44cqw;
+}
+
+.photo-gap-right { float: right; margin-left: 18px; }
+.photo-gap-left  { float: left;  margin-right: 18px; }
+
+.conductor .conductor-action {
+    /* sits beside the joint photo, in whatever width is left */
+    display: flow-root;
+    width: auto;
+    margin: 18px 6px 0;
+    --tilt: -2deg;
+}
 
 /* Our Orchestras */
 #conductors .snapshot.float-right {
@@ -578,6 +923,69 @@ main.front::after {
 
 .details dd {
     margin: 0;
+}
+
+/* a plain white postcard announcing the next concert (until there's a
+   poster) */
+.postcard {
+    position: relative;
+    margin: 40px 18px 34px;
+    padding: 30px 24px 26px;
+    border: 2px solid transparent;
+    background: url(../image/stand/photo-frame.svg) center / 100% 100% no-repeat border-box;
+    text-align: center;
+    transform: rotate(-2deg);
+}
+
+/* a strip of tape at the top */
+.postcard::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    width: 110px;
+    height: 26px;
+    margin-left: -55px;
+    background: url(../image/stand/tape.svg) center / 100% 100% no-repeat;
+    transform: rotate(3deg);
+}
+
+.postcard p {
+    margin: 0;
+}
+
+.postcard-kicker {
+    font-family: var(--sheet-font);
+    font-size: 15px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.postcard-date {
+    margin-top: 14px !important;
+    font-family: var(--sheet-font);
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1.15;
+}
+
+.postcard-time {
+    font-family: var(--sheet-font);
+    font-size: 24px;
+}
+
+.postcard-place {
+    margin-top: 16px !important;
+    font-size: 16px;
+}
+
+.postcard-note {
+    margin-top: 18px !important;
+    padding-top: 12px;
+    border-top: 1px solid #ccc;
+    font-size: 14px;
+    font-style: italic;
 }
 
 /* the rehearsal schedule */
@@ -888,6 +1296,26 @@ footer img {
         border-bottom: 1px solid #e4e0da;
     }
 
+    .has-menu .nav-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .has-menu .nav-sub {
+        position: static;
+        visibility: visible;
+        opacity: 1;
+        padding: 0 0 0 20px;
+        background: none;
+        transform: none;
+        transition: none;
+    }
+
+    .has-menu .nav-sub a {
+        display: block;
+        font-size: 17px;
+    }
+
     .has-menu .site-links .site-donate {
         align-self: flex-start;
         margin-top: 16px;
@@ -962,18 +1390,24 @@ footer img {
         transform: rotate(var(--tilt));
     }
 
-    .sheet-1 { top: -1cqw; --tilt: 12deg; aspect-ratio: 86.18 / 96.62; }
+    /* phones: a straighter sheet shape (Our Orchestras') and a gentler tilt,
+       so the two-line label stays on the paper */
+    .sheet-1 { top: -1cqw; --tilt: 13deg; aspect-ratio: 62.77 / 85.43; }
+    .sheet-1::before { background-image: url(../image/stand/sheet-4-full.svg); }
     .sheet-2 { top: 17cqw; --tilt: 15deg; aspect-ratio: 68.13 / 84.49; }
     .sheet-3 { top: 34cqw; --tilt: 12deg; aspect-ratio: 59.67 / 83.64; }
     .sheet-4 { top: 47cqw; --tilt: 16deg; aspect-ratio: 62.77 / 85.43; }
 
     .sheet:hover,
-    .sheet:focus-visible {
+    .sheet:focus-visible,
+    .sheet.is-linked {
         transform: translateX(3cqw) rotate(var(--tilt));
     }
 
     /* labels moved in from the left edge of the page so they clear the stand */
-    .sheet-1 span { left: 30%; top: 8%;  width: 46%; }
+    /* the label art is drawn slanted (it came from a slanted sheet), so
+       straighten it to sit square on this page */
+    .sheet-1 span { left: 30%; top: 8%;  width: 56%; transform: rotate(7deg); }
     .sheet-2 span { left: 32%; top: 9%;  width: 46%; }
     .sheet-3 span { left: 32%; top: 7%;  width: 58%; }
     .sheet-4 span { left: 32%; top: 7%;  width: 60%; }
@@ -1028,7 +1462,7 @@ footer img {
     .sheets {
         grid-auto-flow: row;
         grid-auto-columns: auto;
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);   /* never wider than the screen */
         row-gap: 32px;
         overflow: visible;
         margin: 0;
@@ -1061,6 +1495,114 @@ footer img {
 
     .page-turn {
         display: none;
+    }
+
+    .mobile-title {
+        display: block;
+        margin: 4px 0 18px;
+        text-align: center;
+        font-size: 32px;
+    }
+
+    /* schedule: tighter spacing so both orchestras' dates fit side by side */
+    .page-sheet:has(.term) {
+        padding-left: 16px;
+        padding-right: 14px;
+    }
+
+    .term-groups {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 0 12px;
+    }
+
+    .term h4 {
+        font-size: 15px;
+    }
+
+    .dates {
+        width: auto;
+        column-gap: 6px;
+        font-size: 14px;
+    }
+
+    /* Our Story: the archive sheets become a swipeable carousel */
+    .archive {
+        display: flex;
+        gap: 18px;
+        margin: 0 -14px;
+        padding: 6px 14px 20px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 14px;
+        scrollbar-width: none;
+        align-items: flex-start;
+    }
+
+    .archive::-webkit-scrollbar {
+        display: none;
+    }
+
+    .archive > .page-sheet {
+        flex: 0 0 86%;
+        scroll-snap-align: center;
+    }
+
+    .archive-hint {
+        display: block;
+        margin: 8px 0 -14px;
+        color: var(--stand);
+        font-family: var(--sheet-font);
+        font-weight: 700;
+        font-size: 20px;
+    }
+
+    .archive-hint span {
+        font-family: Georgia, serif;
+        font-weight: normal;
+        font-style: italic;
+        font-size: 15px;
+    }
+
+    .board {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "summary summary"
+            "photo-l photo-l"
+            "left    left"
+            "photo-r photo-r"
+            "right   right";
+        height: auto;
+        gap: 30px 16px;
+    }
+
+    .pinned-note {
+        position: relative;
+        grid-column: 1 / -1;
+        justify-self: center;
+        left: auto;
+        bottom: auto;
+        grid-row: auto;
+        align-self: auto;
+        margin-top: -46px;   /* overlaps the bottom of the card above */
+        transform: rotate(-3deg);
+    }
+
+    main.front > .conductors-together {
+        position: static;
+        width: 80%;
+        margin: 0 auto 32px;
+        transform: rotate(var(--tilt));
+    }
+
+    .photo-gap {
+        display: none;
+    }
+
+    #about-us .about-photo-1,
+    #about-us .about-photo-2 {
+        float: none;
+        width: auto;
+        margin: 22px 8px;
     }
 
     .page-sheet .snapshot.float-right {

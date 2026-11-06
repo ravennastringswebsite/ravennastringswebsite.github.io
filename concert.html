@@ -29,10 +29,20 @@
         <span class="visually-hidden">Menu</span>
     </button>
     <nav class="site-links" id="site-links" aria-label="Main">
+        <div class="nav-group">
+            <a href="orchestras.html">Our Orchestras</a>
+            <div class="nav-sub">
+                <a href="conductors.html">Conductors</a>
+            </div>
+        </div>
         <a href="concert.html" aria-current="page">Concerts &amp; Schedules</a>
         <a href="register.html">Register</a>
-        <a href="About_Us.html">Our Story</a>
-        <a href="orchestras.html">Our Orchestras</a>
+        <div class="nav-group">
+            <a href="about_us.html">Our Story</a>
+            <div class="nav-sub">
+                <a href="about_us.html#archives">Archives</a>
+            </div>
+        </div>
         <a class="site-donate" href="donate.html">Donate</a>
     </nav>
 </header>
@@ -42,16 +52,29 @@
 <main class="front">
     <div class="sheets">
         <article class="page-sheet">
-            <h1>Our Next Concert</h1>
+            <h1 class="clef-treble">Our Next Concert</h1>
+            <!-- POSTER: put the flyer back here when there is one (and remove
+                 the postcard below)
             <figure class="snapshot taped">
                 <img src="image/ravennaflyer.jpeg" alt="Flyer for our next concert">
             </figure>
+            -->
+            <div class="postcard">
+                <p class="postcard-kicker">Free Fall Concert</p>
+                <p class="postcard-date">Wednesday, November 18</p>
+                <p class="postcard-time">7:30 pm</p>
+                <p class="postcard-place">
+                    <a href="https://saintandrewsseattle.org">St. Andrew's Episcopal Church</a><br>
+                    111 NE 80th Street, Seattle
+                </p>
+                <p class="postcard-note">The Ravenna Strings &amp; Ravenna Strings Sinfonia</p>
+            </div>
             <p class="center"><a href="RavRehSched.pdf">Printable 2026&ndash;27 schedule (PDF)</a></p>
         </article>
 
         <!-- SCHEDULE: edit the dates below each term. -->
         <article class="page-sheet">
-            <h2>2026&ndash;27 Schedule</h2>
+            <h2 class="clef-alto">2026&ndash;27 Schedule</h2>
             <p class="term-intro">Rehearsals are 7&ndash;8:15pm at the Phinney Center.</p>
             <section class="term">
                 <h3>Fall 2026</h3>
