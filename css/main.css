@@ -167,23 +167,6 @@ h1, h2, h3 {
     aspect-ratio: 294 / 223;
 }
 
-/* Home page, desktop: carry the pole on down to the footer line (the pole
-   in the stand art stops a little short of the bottom of the stand).
-   Not needed once stand.svg draws the pole all the way down. */
-@media (min-width: 641px) {
-    .home .stand::after {
-        content: '';
-        position: absolute;
-        left: 45.42%;
-        width: 1.67%;
-        top: 88%;
-        bottom: 0;
-        z-index: 1;
-        background: url(../image/stand/pole.svg) center / 100% 100% no-repeat;
-        pointer-events: none;
-    }
-}
-
 .home main {
     margin: 0;
 }
