@@ -167,12 +167,21 @@ h1, h2, h3 {
     aspect-ratio: 294 / 223;
 }
 
-/* Home page: zoomed in so the stand fills the screen and the pole runs
-   off the bottom. 0.87 = how far down the stand art the desk ends. */
-body.home {
-    height: 100vh;
-    height: 100svh;
-    overflow: hidden;
+/* Home page, desktop: carry the pole on down to the footer line (the pole
+   in the stand art stops a little short of the bottom of the stand).
+   Not needed once stand.svg draws the pole all the way down. */
+@media (min-width: 641px) {
+    .home .stand::after {
+        content: '';
+        position: absolute;
+        left: 45.42%;
+        width: 1.67%;
+        top: 88%;
+        bottom: 0;
+        z-index: 1;
+        background: url(../image/stand/pole.svg) center / 100% 100% no-repeat;
+        pointer-events: none;
+    }
 }
 
 .home main {
@@ -182,6 +191,8 @@ body.home {
 .home .stand {
     max-width: none;
     margin-top: 12px;
+    /* sized so the desk fills the screen; 0.87 = how far down the stand
+       art the desk ends */
     width: min(100%, (100svh - var(--bar) - 12px) / 0.87 * 294 / 223);
 }
 
@@ -1853,11 +1864,4 @@ footer img {
 .close-popup:focus {
     color: #000;
     text-decoration: none;
-}
-footer {
-    display: block !important;
-    position: relative !important;
-    z-index: 10;
-    min-height: 60px;
-    background: yellow;
 }
