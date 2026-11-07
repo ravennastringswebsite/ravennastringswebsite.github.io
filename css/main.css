@@ -1854,3 +1854,10 @@ footer img {
     color: #000;
     text-decoration: none;
 }
+footer {
+    display: block !important;
+    position: relative !important;
+    z-index: 10;
+    min-height: 60px;
+    background: yellow;
+}
