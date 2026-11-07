@@ -309,12 +309,13 @@ h1, h2, h3 {
     box-shadow: 0 0.3cqw 0.5cqw rgba(0, 0, 0, 0.5);
 }
 
-.print-1 { left: 14%; top: 50%; width: 23%; --tilt: -4deg; }
-.print-2 { left: 58%; top: 56%; width: 20%; --tilt: 3deg; }
+/* the left print is big and hangs off the stand's left edge */
+.print-1 { left: 1%;  top: 50%; width: 34%; --tilt: -4deg; }
+.print-2 { left: 56%; top: 55%; width: 25%; --tilt: 3deg; }
 
 .note {
-    left: 81%;
-    top: 62%;
+    left: 83%;
+    top: 64%;
     --tilt: 7deg;
     padding: 1.2cqw 1.8cqw;
     border: 2px solid transparent;
